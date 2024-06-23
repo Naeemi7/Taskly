@@ -2,6 +2,7 @@ import Button from "@Reusable/Button";
 import TaskName from "./TaskName";
 import TaskDescription from "./TaskDescription";
 import TaskDeadline from "./TaskDeadline";
+import TaskCategory from "./TaskCategory";
 
 const AddTask = () => {
   return (
@@ -11,6 +12,7 @@ const AddTask = () => {
         <TaskName />
         <TaskDescription />
         <TaskDeadline />
+        <TaskCategory />
         <Button name="Create Task" className="create-task-button" />
       </form>
     </div>
