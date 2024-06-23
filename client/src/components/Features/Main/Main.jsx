@@ -1,8 +1,8 @@
-import AddTask from "@Features/AddTask/AddTask";
 const Main = () => {
   return (
     <div className="main-container">
-      <AddTask />
+      {/* <AddTask /> */}
+      <h1>main compoent</h1>
     </div>
   );
 };

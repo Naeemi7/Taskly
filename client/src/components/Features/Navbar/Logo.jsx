@@ -1,9 +1,12 @@
-import logo from "../../../assets/images/navbar/logo.png";
+import { Link } from "react-router-dom";
+import logo from "@images/navbar/logo.png";
 
 const Logo = () => {
   return (
     <div className="logo-container">
-      <img src={logo} alt="logo image" />
+      <Link to="/">
+        <img src={logo} alt="logo image" />
+      </Link>
     </div>
   );
 };

@@ -1,15 +1,18 @@
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Icon from "@Reusable/Icon";
 
 const DropdownItem = ({ item }) => {
   return (
     <li>
-      <Icon
-        library={item.library}
-        name={item.name}
-        size={item.size}
-        className="dropdown-icon"
-      />
+      <Link to={item.to}>
+        <Icon
+          library={item.library}
+          name={item.name}
+          size={item.size}
+          className="dropdown-icon"
+        />
+      </Link>
       {item.label}
     </li>
   );
