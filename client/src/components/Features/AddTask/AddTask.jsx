@@ -12,14 +12,25 @@ const AddTask = () => {
     <div className="add-task-container">
       <h2>Add New Task</h2>
       <form>
-        <input type="text" placeholder="Enter task name" />
-        <textarea placeholder="Enter task description"></textarea>
-        <input
-          type="datetime-local"
-          value={dateTime}
-          name="datetime"
-          onChange={handleDateTimeChange}
-        />
+        <div className="input-box">
+          <label htmlFor="task-name">Task Name *</label>
+          <input type="text" placeholder="Enter the task name" />
+        </div>
+
+        <div className="textarea-box">
+          <label htmlFor="task-name">Task Description (optional)</label>
+          <textarea placeholder="Enter task description" />
+        </div>
+
+        <div className="date-box">
+          <label htmlFor="task-name">Task Deadline (optional)</label>
+          <input
+            type="datetime-local"
+            value={dateTime}
+            name="datetime"
+            onChange={handleDateTimeChange}
+          />
+        </div>
 
         <div className="select-category-container">
           <label>Category</label>

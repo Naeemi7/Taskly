@@ -10,12 +10,46 @@
   }
 }
 
+// Mixin template for common input container
+@mixin common-input-container-template {
+  position: relative;
+  width: 100%;
+
+  // Remove the top border under the label
+  &::before {
+    content: "";
+    position: absolute;
+    left: 15px; // Adjust this based on label width
+    top: 0;
+    right: auto;
+    height: -5px;
+    width: calc(100% - 30px); // Adjust to cover the label area
+    background: white;
+    z-index: 1;
+  }
+
+  // Label styling
+  label {
+    position: absolute;
+    left: 15px;
+    top: 0;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 5px;
+    font-size: 1.5rem;
+    color: $font-color;
+    z-index: 2;
+  }
+}
+
 // Mixin template for common input fields
 @mixin common-input-template {
-  border-radius: 0.6rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.8rem;
   border: 2px solid $structure-elements-light-color;
   outline: none;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   padding-left: 1rem;
 
   &:focus {
