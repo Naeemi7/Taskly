@@ -57,9 +57,8 @@ body {
         position: absolute;
         top: 5.8rem;
         right: 0;
-        border: 1px solid $secondary-background-color;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        background-color: $secondary-background-color;
+        background-color: $structure-elements-light-color;
         z-index: 1;
         width: 180px;
         border-top-left-radius: 15px;
@@ -166,11 +165,6 @@ body {
         select {
           @include common-input-template;
           height: 3.6rem;
-
-          option {
-            appearance: none;
-            background-color: red;
-          }
         }
       }
 
