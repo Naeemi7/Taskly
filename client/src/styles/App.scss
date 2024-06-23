@@ -2,8 +2,9 @@
 @import "mixin";
 
 body {
-  background-color: $background-color;
+  background-color: $primary-background-color;
   font-family: "Poppins", sans-serif;
+  color: $font-color;
 }
 
 .app {
@@ -54,13 +55,13 @@ body {
 
       .profile-dropdown {
         position: absolute;
-        top: 50px; /* Adjust based on your design */
+        top: 50px;
         right: 0;
-        border: 1px solid #ccc;
+        border: 1px solid $secondary-background-color;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        background-color: orange;
+        background-color: $secondary-background-color;
         z-index: 1;
-        width: 180px; /* Adjust based on your design */
+        width: 180px;
         border-top-left-radius: 15px;
         border-bottom-right-radius: 15px;
 
@@ -75,11 +76,21 @@ body {
             display: flex;
             align-items: center;
             cursor: pointer;
+            color: $primary-color;
+
+            .dropdown-icon {
+              color: $primary-color;
+            }
 
             &:hover {
-              background-color: #232e58;
+              background-color: $secondary-color;
+              color: $primary-background-color;
               border-top-left-radius: 15px;
               border-bottom-right-radius: 15px;
+
+              .dropdown-icon {
+                color: $primary-background-color;
+              }
             }
 
             svg {

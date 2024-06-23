@@ -15,13 +15,7 @@ const ICON_LIBRARIES = {
   ri: RiIcons,
 };
 
-const Icon = ({
-  library = "fa",
-  name,
-  size = 24,
-  color = "black",
-  className = "",
-}) => {
+const Icon = ({ library = "fa", name, size = 24, className = "" }) => {
   const IconLibrary = ICON_LIBRARIES[library];
   const IconComponent = IconLibrary ? IconLibrary[name] : null;
 
@@ -30,14 +24,13 @@ const Icon = ({
     return null;
   }
 
-  return <IconComponent size={size} color={color} className={className} />;
+  return <IconComponent size={size} className={className} />;
 };
 
 Icon.propTypes = {
   library: PropTypes.string,
   name: PropTypes.string.isRequired,
   size: PropTypes.number,
-  color: PropTypes.string,
   className: PropTypes.string,
 };
 

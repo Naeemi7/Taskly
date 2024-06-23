@@ -8,7 +8,7 @@ const DropdownItem = ({ item }) => {
         library={item.library}
         name={item.name}
         size={item.size}
-        color={item.color}
+        className="dropdown-icon"
       />
       {item.label}
     </li>
