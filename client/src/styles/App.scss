@@ -39,7 +39,6 @@ body {
     // Greeting  Component
     .greeting {
       font-weight: 700;
-      font-size: 2.5rem;
       color: $heading-color;
     }
 
@@ -51,14 +50,7 @@ body {
 
       // Profile icon
       .profile-icon {
-        width: 6rem;
-        height: 6rem;
-        cursor: pointer;
-        color: $primary-color;
-
-        &:hover {
-          color: $secondary-color;
-        }
+        @include icon-template;
       }
 
       .profile-dropdown {
@@ -107,12 +99,79 @@ body {
     }
   }
 
+  // Add Task Component style
+  .add-task-container {
+    height: 80%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+
+    h2 {
+      margin-bottom: 2rem;
+    }
+
+    // Form style
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      textarea {
+        @include common-input-template;
+        height: 10rem;
+        padding-top: 1rem;
+      }
+
+      input {
+        height: 3.5rem;
+        @include common-input-template;
+      }
+
+      // Select category container style
+      .select-category-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+
+        label {
+          font-size: 1.5rem;
+          color: $font-color;
+        }
+
+        select {
+          @include common-input-template;
+          height: 3.6rem;
+
+          option {
+            appearance: none;
+            background-color: red;
+          }
+        }
+      }
+
+      .create-task-button {
+        @include common-button-template;
+        background-color: $primary-color;
+        color: $primary-background-color;
+
+        &:hover {
+          background-color: $hover-color;
+        }
+      }
+    }
+  }
+
   // Main Componenet
   .main-container {
+    width: 70%;
+    height: 100%;
+    padding: 3rem;
     grid-area: main;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   // Footer Component
@@ -124,14 +183,7 @@ body {
     align-items: center;
 
     .add-task-button {
-      width: 6rem;
-      height: 6rem;
-      cursor: pointer;
-      color: $primary-color;
-
-      &:hover {
-        color: $secondary-color;
-      }
+      @include icon-template;
     }
   }
 }

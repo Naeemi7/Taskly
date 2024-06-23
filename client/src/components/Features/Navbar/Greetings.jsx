@@ -1,6 +1,6 @@
 import DisplayGreeting from "@utils/DisplayGreeting";
 const Greetings = () => {
-  return <span className="greeting">👋 {DisplayGreeting()}</span>;
+  return <h1 className="greeting">👋 {DisplayGreeting()}, User</h1>;
 };
 
 export default Greetings;
