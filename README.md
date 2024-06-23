@@ -1,1 +1,1 @@
-# task-management-app
+# Taskly
