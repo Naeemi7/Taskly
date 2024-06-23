@@ -1,0 +1,109 @@
+@import "variables";
+@import "mixin";
+
+body {
+  background-color: $background-color;
+  font-family: "Poppins", sans-serif;
+}
+
+.app {
+  width: 100vw;
+  display: grid;
+  grid-template-areas:
+    "navbar"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 8rem 1fr 8rem;
+  min-height: 100vh;
+
+  position: relative;
+
+  // Navbar Component
+  .navbar-container {
+    grid-area: navbar;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+
+    // Greeting  Component
+    .greeting {
+      font-weight: 700;
+      font-size: 2.5rem;
+    }
+
+    //Profile Component
+    .profile-container {
+      position: relative;
+      display: inline-block;
+
+      .profile-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      // Profile Span
+      span {
+        font-size: 1.5rem;
+        font-size: large;
+      }
+
+      .profile-dropdown {
+        position: absolute;
+        top: 50px; /* Adjust based on your design */
+        right: 0;
+        border: 1px solid #ccc;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        background-color: orange;
+        z-index: 1;
+        width: 180px; /* Adjust based on your design */
+        border-top-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            font-size: 1.5rem;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #232e58;
+              border-top-left-radius: 15px;
+              border-bottom-right-radius: 15px;
+            }
+
+            svg {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Main Componenet
+  .main-container {
+    grid-area: main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // Footer Component
+  .footer-container {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
