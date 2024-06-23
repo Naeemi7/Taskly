@@ -1,5 +1,5 @@
 import { useState } from "react";
-import profile from "@images/navbar/profile.png";
+import Icon from "@Reusable/Icon";
 import reactIconsData from "@data/reactIconsData";
 import DropdownItem from "./DropdownItem";
 
@@ -20,7 +20,12 @@ const Profile = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <img src={profile} alt="Profile" className="profile-image" />
+      <Icon
+        library="pi"
+        name="PiUserCircleGearFill"
+        size={24}
+        className="profile-icon"
+      />
 
       {showDropdown && (
         <div className="profile-dropdown">

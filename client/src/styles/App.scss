@@ -15,7 +15,7 @@ body {
     "main"
     "footer";
   grid-template-columns: 1fr;
-  grid-template-rows: 8rem 1fr 8rem;
+  grid-template-rows: 10rem 1fr 10rem;
   min-height: 100vh;
 
   position: relative;
@@ -29,10 +29,17 @@ body {
     z-index: 1;
     width: 100%;
 
+    // Logo Component
+    .logo-container {
+      img {
+        height: 7rem;
+      }
+    }
     // Greeting  Component
     .greeting {
       font-weight: 700;
       font-size: 2.5rem;
+      color: $heading-color;
     }
 
     //Profile Component
@@ -40,11 +47,15 @@ body {
       position: relative;
       display: inline-block;
 
-      .profile-image {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+      .profile-icon {
+        width: 6rem;
+        height: 6rem;
         cursor: pointer;
+        color: $primary-color;
+
+        &:hover {
+          color: $secondary-color;
+        }
       }
 
       // Profile Span
@@ -55,7 +66,7 @@ body {
 
       .profile-dropdown {
         position: absolute;
-        top: 50px;
+        top: 5.8rem;
         right: 0;
         border: 1px solid $secondary-background-color;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);

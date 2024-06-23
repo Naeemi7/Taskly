@@ -5,6 +5,7 @@ import * as MdIcons from "react-icons/md";
 import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
 import * as RiIcons from "react-icons/ri";
+import * as PiIcons from "react-icons/pi";
 
 const ICON_LIBRARIES = {
   fa: FaIcons,
@@ -13,6 +14,7 @@ const ICON_LIBRARIES = {
   io: IoIcons,
   bs: BsIcons,
   ri: RiIcons,
+  pi: PiIcons,
 };
 
 const Icon = ({ library = "fa", name, size = 24, className = "" }) => {
