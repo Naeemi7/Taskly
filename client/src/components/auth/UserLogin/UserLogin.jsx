@@ -3,15 +3,12 @@ import ReusableInput from "@reusable/ReusableInput";
 import ReusableButton from "@reusable/ReusableButton";
 import ReusableIcon from "@reusable/ReusableIcon";
 import Navigator from "@reusable/Navigator";
+import useUserContext from "@hooks/useUserContext";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  const { showPassword, togglePasswordVisibility } = useUserContext();
 
   return (
     <div className="main-container">

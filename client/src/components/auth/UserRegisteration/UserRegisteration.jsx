@@ -3,6 +3,7 @@ import ReusableInput from "@reusable/ReusableInput";
 import ReusableButton from "@reusable/ReusableButton";
 import ReusableIcon from "@reusable/ReusableIcon";
 import Navigator from "@reusable/Navigator";
+import useUserContext from "@hooks/useUserContext";
 
 const UserRegisteration = () => {
   const [firstname, setFirstname] = useState("");
@@ -11,6 +12,8 @@ const UserRegisteration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(false);
+  const { showPassword, togglePasswordVisibility } = useUserContext();
+
   return (
     <div className="main-container">
       <div className="user-registeration-container">
@@ -53,24 +56,43 @@ const UserRegisteration = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          {/* Input for password */}
-          <ReusableInput
-            labelName="Password"
-            inputType="password"
-            inputValue={password}
-            placeholder="Enter your password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          {/* Inputer for password */}
+          <div className="password-input">
+            <ReusableInput
+              labelName="Password *"
+              inputType={showPassword ? "text" : "password"}
+              inputValue={password}
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            {/* Reusable Icon component for displaying icons and making the password visibale */}
+            <ReusableIcon
+              library="fa"
+              name={showPassword ? "FaEyeSlash" : "FaEye"}
+              className="hide-and-show-pass"
+              onClick={togglePasswordVisibility}
+            />
+          </div>
 
           {/* Input for confirm password */}
-          <ReusableInput
-            labelName="Confirm password"
-            inputType="password"
-            inputValue={confirmPassword}
-            placeholder="Confirm your password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+          <div className="password-input">
+            <ReusableInput
+              labelName="Password *"
+              inputType={showPassword ? "text" : "password"}
+              inputValue={password}
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
+            {/* Reusable Icon component for displaying icons and making the password visibale */}
+            <ReusableIcon
+              library="fa"
+              name={showPassword ? "FaEyeSlash" : "FaEye"}
+              className="hide-and-show-pass"
+              onClick={togglePasswordVisibility}
+            />
+          </div>
           <ReusableButton name="Register" />
 
           <Navigator
