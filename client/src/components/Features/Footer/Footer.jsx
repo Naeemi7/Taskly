@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Icon from "@Reusable/Icon";
+import Icon from "@reusable/Icon";
 
 const Footer = () => {
   const navigate = useNavigate();

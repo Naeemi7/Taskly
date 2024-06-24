@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Icon from "@Reusable/Icon";
+import Icon from "@reusable/Icon";
 import reactIconsData from "@data/reactIconsData";
 import DropdownItem from "./DropdownItem";
 

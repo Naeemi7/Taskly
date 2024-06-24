@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import "@styles/App.scss";
-import Navbar from "@Features/Navbar/Navbar";
-import Main from "@Features/Main/Main";
-import AddTask from "@Features/AddTask/AddTask";
-import Footer from "@Features/Footer/Footer";
+import Navbar from "@features/Navbar/Navbar";
+import Main from "@features/Main/Main";
+import AddTask from "@features/AddTask/AddTask";
+import Footer from "@features/Footer/Footer";
 
 function App() {
   return (

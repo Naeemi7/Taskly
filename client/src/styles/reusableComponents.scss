@@ -1,0 +1,44 @@
+@import "variables";
+@import "mixin";
+
+// Reusable Input component style
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .password-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .hide-and-show-pass {
+      position: absolute;
+      right: 1rem; // Adjust as necessary
+      cursor: pointer;
+    }
+  }
+
+  // Input box style
+  .input-box {
+    @include common-input-container-template;
+    height: 5rem;
+
+    input {
+      padding-top: 0.3rem;
+      @include common-input-template;
+    }
+  }
+
+  // Reusable button
+  .reusable-button {
+    @include common-button-template;
+    background-color: $primary-color;
+    color: $primary-background-color;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}

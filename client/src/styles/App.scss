@@ -101,7 +101,7 @@ body {
   // Add Task Component style
   .add-task-container {
     height: 80%;
-    width: 35%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,21 +113,7 @@ body {
 
     // Form style
     form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
       gap: 2.5rem;
-
-      // Input box style
-      .input-box {
-        @include common-input-container-template;
-        height: 5rem;
-
-        input {
-          padding-top: 0.3rem;
-          @include common-input-template;
-        }
-      }
 
       // Textarea box style
       .textarea-box {
@@ -167,16 +153,22 @@ body {
           height: 3.6rem;
         }
       }
+    }
+  }
 
-      .create-task-button {
-        @include common-button-template;
-        background-color: $primary-color;
-        color: $primary-background-color;
+  // UserLogin Component style
+  .user-login-container {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        &:hover {
-          background-color: $hover-color;
-        }
-      }
+    h2 {
+      margin-bottom: 3rem;
+    }
+
+    form {
+      gap: 1.8rem;
     }
   }
 

@@ -19,8 +19,9 @@ export default defineConfig({
       "@images": `${currentWorkingDirectory}/src/assets/images`,
       "@utils": `${currentWorkingDirectory}/src/utils`,
       "@data": `${currentWorkingDirectory}/src/data`,
-      "@Features": `${currentWorkingDirectory}/src/components/Features`,
-      "@Reusable": `${currentWorkingDirectory}/src/components/Reusable`,
+      "@features": `${currentWorkingDirectory}/src/components/features`,
+      "@reusable": `${currentWorkingDirectory}/src/components/reusable`,
+      "@auth": `${currentWorkingDirectory}/src/components/auth`,
     },
   },
 });

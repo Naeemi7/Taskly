@@ -17,7 +17,13 @@ const ICON_LIBRARIES = {
   pi: PiIcons,
 };
 
-const Icon = ({ library = "fa", name, size = 24, className = "", onClick }) => {
+export default function Icon({
+  library = "fa",
+  name,
+  size = 24,
+  className = "",
+  onClick,
+}) {
   const IconLibrary = ICON_LIBRARIES[library];
   const IconComponent = IconLibrary ? IconLibrary[name] : null;
 
@@ -27,7 +33,7 @@ const Icon = ({ library = "fa", name, size = 24, className = "", onClick }) => {
   }
 
   return <IconComponent size={size} className={className} onClick={onClick} />;
-};
+}
 
 Icon.propTypes = {
   library: PropTypes.string,
@@ -36,5 +42,3 @@ Icon.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
 };
-
-export default Icon;
