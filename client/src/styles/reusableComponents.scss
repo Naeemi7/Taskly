@@ -3,6 +3,17 @@
 
 // Reusable Input component style
 
+// Reusable button
+.reusable-button {
+  @include common-button-template;
+  background-color: $primary-color;
+  color: $primary-background-color;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
 form {
   width: 100%;
   display: flex;
@@ -28,17 +39,6 @@ form {
     input {
       padding-top: 0.3rem;
       @include common-input-template;
-    }
-  }
-
-  // Reusable button
-  .reusable-button {
-    @include common-button-template;
-    background-color: $primary-color;
-    color: $primary-background-color;
-
-    &:hover {
-      background-color: $hover-color;
     }
   }
 
