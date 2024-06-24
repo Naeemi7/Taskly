@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import UserContext from "@context/UserContext";
 
-export default function UseUserContext() {
+export default function useUserContext() {
   // Access the UserContext
   const context = useContext(UserContext);
 

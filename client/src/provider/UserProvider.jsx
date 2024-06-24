@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import UserContext from "@context/UserContext";
 
 export default function UserProvider({ children }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <UserContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>

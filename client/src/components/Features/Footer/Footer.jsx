@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import Icon from "@reusable/Icon";
-import UseUserContext from "@hooks/UseUserContext";
+import useUserContext from "@hooks/useUserContext";
 
 const Footer = () => {
   const navigate = useNavigate();
-  const { isLoggedIn } = UseUserContext();
+  const { isLoggedIn } = useUserContext();
 
   const handleClick = () => {
     navigate("/add-task");

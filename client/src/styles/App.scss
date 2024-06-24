@@ -186,6 +186,22 @@ body {
       }
     }
 
+    // UserRegisteration Component style
+
+    .user-registeration-container {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        margin-bottom: 3rem;
+      }
+
+      form {
+        gap: 1.8rem;
+      }
+    }
     // UserLogin Component style
     .user-login-container {
       width: 30%;

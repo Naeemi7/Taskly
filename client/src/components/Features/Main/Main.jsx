@@ -1,10 +1,10 @@
-import UseUserContext from "@hooks/UseUserContext";
+import useUserContext from "@hooks/useUserContext";
 import Button from "@reusable/Button";
 import Navigator from "@reusable/Navigator";
 import landingImage from "@images/main/taskly-landing.png";
 
 const Main = () => {
-  const { isLoggedIn } = UseUserContext();
+  const { isLoggedIn } = useUserContext();
 
   return (
     <div className="main-container">
