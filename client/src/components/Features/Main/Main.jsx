@@ -1,8 +1,35 @@
+import UseUserContext from "@hooks/UseUserContext";
+import Button from "@reusable/Button";
+import Navigator from "@reusable/Navigator";
+import landingImage from "@images/main/taskly-landing.png";
+
 const Main = () => {
+  const { isLoggedIn } = UseUserContext();
+
   return (
     <div className="main-container">
-      <h2>main compoent</h2>
-      {/* <UserLogin /> */}
+      {isLoggedIn ? (
+        <h2>main compoent</h2>
+      ) : (
+        <div className="unprotected-main">
+          <div className="unprotected-main-content">
+            <h4>
+              Taskly is your new go-to app for managing tasks efficiently.
+              Organize your projects, collaborate with your team, and stay on
+              top of your deadlines.
+            </h4>
+            <Button name="Register now!" width={250} />
+            <Navigator
+              message="Already registered?"
+              pathName="Login"
+              pathUrl="/user-login"
+            />
+          </div>
+          <div className="unprotected-main-image">
+            <img src={landingImage} alt="landing image" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
