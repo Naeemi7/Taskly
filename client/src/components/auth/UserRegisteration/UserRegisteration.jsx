@@ -2,7 +2,7 @@ import { useState } from "react";
 import ReusableInput from "@reusable/ReusableInput";
 import ReusableButton from "@reusable/ReusableButton";
 import ReusableIcon from "@reusable/ReusableIcon";
-import ReusableNavigator from "@reusable/ReusableNavigator";
+import Navigator from "@reusable/Navigator";
 
 const UserRegisteration = () => {
   const [firstname, setFirstname] = useState("");
@@ -73,7 +73,7 @@ const UserRegisteration = () => {
 
           <ReusableButton name="Register" />
 
-          <ReusableNavigator
+          <Navigator
             message="Already signed up? "
             pathName="Login"
             pathUrl="/user-login"

@@ -2,7 +2,7 @@ import { useState } from "react";
 import ReusableInput from "@reusable/ReusableInput";
 import ReusableButton from "@reusable/ReusableButton";
 import ReusableIcon from "@reusable/ReusableIcon";
-import ReusableNavigator from "@reusable/ReusableNavigator";
+import Navigator from "@reusable/Navigator";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
@@ -49,7 +49,7 @@ const UserLogin = () => {
 
           <ReusableButton name="Login" />
 
-          <ReusableNavigator
+          <Navigator
             message="No account yet?
         "
             pathName="Register"
