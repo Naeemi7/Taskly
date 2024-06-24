@@ -20,9 +20,10 @@ const Main = () => {
             </h4>
             <Button name="Register now!" width={250} />
             <Navigator
-              message="Already registered?"
+              message="Already registered? "
               pathName="Login"
               pathUrl="/user-login"
+              className="link"
             />
           </div>
           <div className="unprotected-main-image">

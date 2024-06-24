@@ -8,11 +8,27 @@ const Navigator = ({ message = "", pathName = "", pathUrl = "" }) => {
     navigate(pathUrl);
   };
 
+  const linkStyle = {
+    color: "#712c9c",
+    fontWeight: "bold",
+    transition: "color 0.3s ease",
+  };
+
+  const hoverStyle = {
+    color: "#4b2069",
+  };
+
   return (
     <div className="navigator-container">
       <p>
-        {message}{" "}
-        <Link to={pathUrl} onClick={handleClick} className="link">
+        {message}
+        <Link
+          to={pathUrl}
+          onClick={handleClick}
+          style={linkStyle}
+          onMouseEnter={(e) => (e.target.style.color = hoverStyle.color)}
+          onMouseLeave={(e) => (e.target.style.color = linkStyle.color)}
+        >
           {pathName}
         </Link>
       </p>
