@@ -3,7 +3,7 @@ import ReusableInput from "@reusable/ReusableInput";
 import ReusableButton from "@reusable/ReusableButton";
 import ReusableIcon from "@reusable/ReusableIcon";
 import Navigator from "@reusable/Navigator";
-import useUserContext from "@hooks/useUserContext";
+import usePasswordVisibility from "@hooks/usePasswordVisibility";
 
 const UserRegisteration = () => {
   const [firstname, setFirstname] = useState("");
@@ -12,19 +12,43 @@ const UserRegisteration = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(false);
-  const { showPassword, togglePasswordVisibility } = useUserContext();
+  const { showPassword, togglePasswordVisibility } = usePasswordVisibility();
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    // Extract the form data
+    const formData = new FormData(e.target);
+
+    const data = {
+      firstName: formData.get("firstName"),
+      lastName: formData.get("lastName"),
+      email: formData.get("email"),
+      username: formData.get("username"),
+      password: formData.get("password"),
+    };
+
+    const confirmedPassword = formData.get("confirm-password");
+
+    if (data.password !== confirmPassword) {
+      setConfirmPassword(false);
+      return;
+    } else {
+      setConfirmPassword(true);
+    }
+  };
 
   return (
     <div className="main-container">
       <div className="user-registeration-container">
         <h2>Registeration</h2>
 
-        <form>
+        <form onSubmit={handleFormSubmit}>
           {/* Input for the firstname */}
           <ReusableInput
             labelName="Firstname"
             inputType="text"
-            inputValue={firstname}
+            name={firstname}
             placeholder="Enter your firstname"
             onChange={(e) => setFirstname(e.target.value)}
           />
@@ -33,7 +57,7 @@ const UserRegisteration = () => {
           <ReusableInput
             labelName="Lastname"
             inputType="text"
-            inputValue={lastname}
+            name={lastname}
             placeholder="Enter your lastname"
             onChange={(e) => setLastname(e.target.value)}
           />
@@ -42,7 +66,7 @@ const UserRegisteration = () => {
           <ReusableInput
             labelName="Username"
             inputType="text"
-            inputValue={username}
+            name={username}
             placeholder="Enter your username"
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -51,7 +75,7 @@ const UserRegisteration = () => {
           <ReusableInput
             labelName="Email"
             inputType="email"
-            inputValue={email}
+            name={email}
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -61,7 +85,7 @@ const UserRegisteration = () => {
             <ReusableInput
               labelName="Password *"
               inputType={showPassword ? "text" : "password"}
-              inputValue={password}
+              name={password}
               placeholder="Enter your password"
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -78,11 +102,11 @@ const UserRegisteration = () => {
           {/* Input for confirm password */}
           <div className="password-input">
             <ReusableInput
-              labelName="Password *"
+              labelName="Confirm password"
               inputType={showPassword ? "text" : "password"}
-              inputValue={password}
-              placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
+              name={confirmPassword}
+              placeholder="Confirm your password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
 
             {/* Reusable Icon component for displaying icons and making the password visibale */}
