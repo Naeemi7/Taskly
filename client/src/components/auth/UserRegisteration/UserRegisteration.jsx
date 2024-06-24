@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Input from "@reusable/Input";
-import Button from "@reusable/Button";
-import Icon from "@reusable/Icon";
-import Navigator from "@reusable/Navigator";
+import ReusableInput from "@reusable/ReusableInput";
+import ReusableButton from "@reusable/ReusableButton";
+import ReusableIcon from "@reusable/ReusableIcon";
+import ReusableNavigator from "@reusable/ReusableNavigator";
 
 const UserRegisteration = () => {
   const [firstname, setFirstname] = useState("");
@@ -18,7 +18,7 @@ const UserRegisteration = () => {
 
         <form>
           {/* Input for the firstname */}
-          <Input
+          <ReusableInput
             labelName="Firstname"
             inputType="text"
             inputValue={firstname}
@@ -27,7 +27,7 @@ const UserRegisteration = () => {
           />
 
           {/* Input for lastname */}
-          <Input
+          <ReusableInput
             labelName="Lastname"
             inputType="text"
             inputValue={lastname}
@@ -36,7 +36,7 @@ const UserRegisteration = () => {
           />
 
           {/* Input for username */}
-          <Input
+          <ReusableInput
             labelName="Username"
             inputType="text"
             inputValue={username}
@@ -45,7 +45,7 @@ const UserRegisteration = () => {
           />
 
           {/* Input for email */}
-          <Input
+          <ReusableInput
             labelName="Email"
             inputType="email"
             inputValue={email}
@@ -54,7 +54,7 @@ const UserRegisteration = () => {
           />
 
           {/* Input for password */}
-          <Input
+          <ReusableInput
             labelName="Password"
             inputType="password"
             inputValue={password}
@@ -63,7 +63,7 @@ const UserRegisteration = () => {
           />
 
           {/* Input for confirm password */}
-          <Input
+          <ReusableInput
             labelName="Confirm password"
             inputType="password"
             inputValue={confirmPassword}
@@ -71,9 +71,9 @@ const UserRegisteration = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          <Button name="Register" />
+          <ReusableButton name="Register" />
 
-          <Navigator
+          <ReusableNavigator
             message="Already signed up? "
             pathName="Login"
             pathUrl="/user-login"

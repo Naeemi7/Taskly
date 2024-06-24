@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Icon from "@reusable/Icon";
+import ReusableIcon from "@reusable/ReusableIcon";
 import useUserContext from "@hooks/useUserContext";
 
 const Footer = () => {
@@ -14,7 +14,7 @@ const Footer = () => {
     <div className="footer-container">
       <footer className={isLoggedIn ? "authorized" : "unauthorized"}>
         {isLoggedIn ? (
-          <Icon
+          <ReusableIcon
             library="ri"
             name="RiAddCircleFill"
             className="add-task-button"
@@ -23,7 +23,7 @@ const Footer = () => {
         ) : (
           <div className="unauthorized-footer">
             <a href="https://github.com/Naeemi7" target="_black">
-              <Icon
+              <ReusableIcon
                 library="fa"
                 name="FaGithub"
                 className="social-icons"
@@ -34,7 +34,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/abdulwase-naeemi/"
               target="_black"
             >
-              <Icon
+              <ReusableIcon
                 library="fa"
                 name="FaLinkedin"
                 className="social-icons"

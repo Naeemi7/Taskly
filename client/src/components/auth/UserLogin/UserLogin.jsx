@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Input from "@reusable/Input";
-import Button from "@reusable/Button";
-import Icon from "@reusable/Icon";
-import Navigator from "@reusable/Navigator";
+import ReusableInput from "@reusable/ReusableInput";
+import ReusableButton from "@reusable/ReusableButton";
+import ReusableIcon from "@reusable/ReusableIcon";
+import ReusableNavigator from "@reusable/ReusableNavigator";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +20,7 @@ const UserLogin = () => {
 
         <form>
           {/* Input for email */}
-          <Input
+          <ReusableInput
             labelName="Email *"
             inputType="email"
             inputValue={email}
@@ -30,7 +30,7 @@ const UserLogin = () => {
 
           {/* Inputer for password */}
           <div className="password-input">
-            <Input
+            <ReusableInput
               labelName="Password *"
               inputType={showPassword ? "text" : "password"}
               inputValue={password}
@@ -39,7 +39,7 @@ const UserLogin = () => {
             />
 
             {/* Reusable Icon component for displaying icons and making the password visibale */}
-            <Icon
+            <ReusableIcon
               library="fa"
               name={showPassword ? "FaEyeSlash" : "FaEye"}
               className="hide-and-show-pass"
@@ -47,9 +47,9 @@ const UserLogin = () => {
             />
           </div>
 
-          <Button name="Login" />
+          <ReusableButton name="Login" />
 
-          <Navigator
+          <ReusableNavigator
             message="No account yet?
         "
             pathName="Register"

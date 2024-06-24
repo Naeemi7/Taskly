@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import Greetings from "./Greetings";
 import Profile from "./Profile";
 import Logo from "./Logo";
-import Button from "@reusable/Button";
+import ReusableButton from "@reusable/ReusableButton";
 
 import UseUserContext from "@hooks/UseUserContext";
 
@@ -23,7 +23,7 @@ const Navbar = () => {
           <Profile />
         </>
       ) : (
-        <Button name="Login" width={80} onClick={handleNavigation} />
+        <ReusableButton name="Login" width={80} onClick={handleNavigation} />
       )}
     </div>
   );

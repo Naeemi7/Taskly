@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navigator = ({ message = "", pathName = "", pathUrl = "" }) => {
+const ReusableNavigator = ({ message = "", pathName = "", pathUrl = "" }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -36,7 +36,7 @@ const Navigator = ({ message = "", pathName = "", pathUrl = "" }) => {
   );
 };
 
-Navigator.propTypes = {
+ReusableNavigator.propTypes = {
   message: PropTypes.string,
   pathName: PropTypes.string,
   pathUrl: PropTypes.string,

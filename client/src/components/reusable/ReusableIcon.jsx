@@ -17,7 +17,7 @@ const ICON_LIBRARIES = {
   pi: PiIcons,
 };
 
-export default function Icon({
+export default function ReusableIcon({
   library = "fa",
   name,
   size = 24,
@@ -35,7 +35,7 @@ export default function Icon({
   return <IconComponent size={size} className={className} onClick={onClick} />;
 }
 
-Icon.propTypes = {
+ReusableIcon.propTypes = {
   library: PropTypes.string,
   name: PropTypes.string.isRequired,
   size: PropTypes.number,

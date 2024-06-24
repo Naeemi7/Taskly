@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Button from "@reusable/Button";
-import Input from "@reusable/Input";
+import ReusableButton from "@reusable/ReusableButton";
+import ReusableInput from "@reusable/ReusableInput";
 import TaskDescription from "./TaskDescription";
 import TaskDeadline from "./TaskDeadline";
 import TaskCategory from "./TaskCategory";
@@ -12,7 +12,7 @@ const AddTask = () => {
       <div className="add-task-container">
         <h2>Add New Task</h2>
         <form>
-          <Input
+          <ReusableInput
             labelName="Task Name *"
             inputType="text"
             inputValue={taskName}
@@ -22,7 +22,7 @@ const AddTask = () => {
           <TaskDescription />
           <TaskDeadline />
           <TaskCategory />
-          <Button name="Create Task" />
+          <ReusableButton name="Create Task" />
         </form>
       </div>
     </div>

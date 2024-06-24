@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   width: ${(props) => (props.width ? `${props.width}px` : "auto")};
 `;
 
-export default function Button({
+export default function ReusableButton({
   name = "button",
   className = "reusable-button",
   width,
@@ -18,7 +18,7 @@ export default function Button({
   );
 }
 
-Button.propTypes = {
+ReusableButton.propTypes = {
   name: PropTypes.string,
   className: PropTypes.string,
   width: PropTypes.number,
