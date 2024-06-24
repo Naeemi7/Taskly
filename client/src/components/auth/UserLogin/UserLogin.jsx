@@ -2,6 +2,7 @@ import { useState } from "react";
 import Input from "@reusable/Input";
 import Button from "@reusable/Button";
 import Icon from "@reusable/Icon";
+import Navigator from "@reusable/Navigator";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,15 @@ const UserLogin = () => {
             onClick={togglePasswordVisibility}
           />
         </div>
+
         <Button name="Login" />
+
+        <Navigator
+          message="No account yet?
+        "
+          pathName="Register"
+          pathUrl="/add-task"
+        />
       </form>
     </div>
   );

@@ -41,4 +41,18 @@ form {
       background-color: $hover-color;
     }
   }
+
+  // Reusable Navigator
+  .navigator-container {
+    margin-top: -10px;
+
+    p {
+      color: $font-color;
+
+      .link {
+        color: $primary-color;
+        font-weight: bold;
+      }
+    }
+  }
 }
