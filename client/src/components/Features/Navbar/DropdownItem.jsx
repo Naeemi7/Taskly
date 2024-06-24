@@ -4,17 +4,18 @@ import Icon from "@reusable/Icon";
 
 const DropdownItem = ({ item }) => {
   return (
-    <li>
-      <Link to={item.to}>
+    <Link to={item.to} className="dropdown-link-items">
+      <li>
         <Icon
           library={item.library}
           name={item.name}
           size={item.size}
           className="dropdown-icon"
         />
-      </Link>
-      {item.label}
-    </li>
+
+        {item.label}
+      </li>
+    </Link>
   );
 };
 

@@ -69,27 +69,31 @@ body {
           margin: 0;
           padding: 0;
 
-          li {
-            font-size: 1.5rem;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            color: $primary-color;
+          .dropdown-link-items {
+            text-decoration: none;
 
-            .dropdown-icon {
+            li {
+              font-size: 1.5rem;
+              padding: 10px;
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              cursor: pointer;
               color: $primary-color;
-            }
-
-            &:hover {
-              background-color: $secondary-color;
-              color: $primary-background-color;
-              border-top-left-radius: 15px;
-              border-bottom-right-radius: 15px;
 
               .dropdown-icon {
+                color: $primary-color;
+              }
+
+              &:hover {
+                background-color: $secondary-color;
                 color: $primary-background-color;
+                border-top-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+
+                .dropdown-icon {
+                  color: $primary-background-color;
+                }
               }
             }
           }
@@ -111,6 +115,7 @@ body {
     .unprotected-main {
       display: flex;
       width: 100%;
+
       justify-content: center;
       align-items: center;
 

@@ -40,6 +40,7 @@ const reactIconsData = [
     name: "FaSignOutAlt",
     size: 22,
     label: "Logout",
+    to: "/logout",
   },
 ];
 
