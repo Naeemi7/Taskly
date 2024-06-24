@@ -185,14 +185,69 @@ body {
 
   // Footer Component
   .footer-container {
+    width: 100vw;
     grid-area: footer;
-    width: 70%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 
-    .add-task-button {
-      @include icon-template;
+    // authorized layout for footer
+    .authorized {
+      width: 70%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .add-task-button {
+        @include icon-template;
+      }
+    }
+
+    // unauthorized layout for footer
+    .unauthorized {
+      background-color: $primary-color;
+      box-shadow: 0 1rem 1.25rem 0 rgba(180, 70, 207, 0.4),
+        0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
+        0 0.25rem 0.5rem 0 rgba(110, 15, 155, 1) inset;
+      width: 100vw;
+      height: 8rem;
+      position: fixed;
+      bottom: 0;
+      margin-bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .unauthorized-footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+
+      .social-icons {
+        color: $primary-background-color;
+        font-size: 4rem;
+        cursor: pointer;
+        animation: colorChangeAnimation 3s infinite;
+        &:hover {
+          color: $heading-color;
+        }
+      }
+      @keyframes colorChangeAnimation {
+        0% {
+          color: $primary-background-color;
+        }
+        33% {
+          color: lighten($primary-background-color, 20%);
+        }
+        66% {
+          color: darken($primary-background-color, 20%);
+        }
+        100% {
+          color: $primary-background-color;
+        }
+      }
     }
   }
 }

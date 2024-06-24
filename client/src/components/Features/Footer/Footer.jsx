@@ -1,20 +1,49 @@
 import { useNavigate } from "react-router-dom";
 import Icon from "@reusable/Icon";
+import UseUserContext from "@hooks/UseUserContext";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const { isLoggedIn } = UseUserContext();
 
   const handleClick = () => {
     navigate("/add-task");
   };
+
   return (
     <div className="footer-container">
-      <Icon
-        library="ri"
-        name="RiAddCircleFill"
-        className="add-task-button"
-        onClick={handleClick}
-      />
+      <footer className={isLoggedIn ? "authorized" : "unauthorized"}>
+        {isLoggedIn ? (
+          <Icon
+            library="ri"
+            name="RiAddCircleFill"
+            className="add-task-button"
+            onClick={handleClick}
+          />
+        ) : (
+          <div className="unauthorized-footer">
+            <a href="https://github.com/Naeemi7" target="_black">
+              <Icon
+                library="fa"
+                name="FaGithub"
+                className="social-icons"
+                size={35}
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/abdulwase-naeemi/"
+              target="_black"
+            >
+              <Icon
+                library="fa"
+                name="FaLinkedin"
+                className="social-icons"
+                size={35}
+              />
+            </a>
+          </div>
+        )}
+      </footer>
     </div>
   );
 };
