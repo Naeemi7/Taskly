@@ -1,14 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import useNavigator from "@hooks/useNavigator";
 import ReusableIcon from "@reusable/ReusableIcon";
 import useUserContext from "@hooks/useUserContext";
 
 const Footer = () => {
-  const navigate = useNavigate();
   const { isLoggedIn } = useUserContext();
-
-  const handleClick = () => {
-    navigate("/add-task");
-  };
+  const goTo = useNavigator();
 
   return (
     <div className="footer-container">
@@ -18,7 +14,7 @@ const Footer = () => {
             library="ri"
             name="RiAddCircleFill"
             className="add-task-button"
-            onClick={handleClick}
+            onClick={() => goTo("/add-task")}
           />
         ) : (
           <div className="unauthorized-footer">

@@ -1,18 +1,14 @@
-import { useNavigate } from "react-router-dom";
 import Greetings from "./Greetings";
 import Profile from "./Profile";
 import Logo from "./Logo";
 import ReusableButton from "@reusable/ReusableButton";
-
 import UseUserContext from "@hooks/UseUserContext";
+import useNavigator from "@hooks/useNavigator";
 
 const Navbar = () => {
   const { isLoggedIn } = UseUserContext();
-  const navigate = useNavigate();
+  const goTo = useNavigator();
 
-  const handleNavigation = () => {
-    navigate("/user-login");
-  };
   return (
     <div className="navbar-container">
       <Logo />
@@ -23,7 +19,11 @@ const Navbar = () => {
           <Profile />
         </>
       ) : (
-        <ReusableButton name="Login" width={80} onClick={handleNavigation} />
+        <ReusableButton
+          name="Login"
+          width={80}
+          onClick={() => goTo("/user-login")}
+        />
       )}
     </div>
   );

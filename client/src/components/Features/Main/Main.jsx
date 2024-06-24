@@ -1,16 +1,13 @@
-import { useNavigate } from "react-router-dom";
 import useUserContext from "@hooks/useUserContext";
 import ReusableButton from "@reusable/ReusableButton";
 import Navigator from "@reusable/Navigator";
+import useNavigator from "@hooks/useNavigator";
 import landingImage from "@images/main/taskly-landing.png";
 
 const Main = () => {
   const { isLoggedIn } = useUserContext();
-  const navigate = useNavigate();
+  const goTo = useNavigator();
 
-  const handleNavigation = () => {
-    navigate("/user-registeration");
-  };
   return (
     <div className="main-container">
       {isLoggedIn ? (
@@ -26,7 +23,7 @@ const Main = () => {
             <ReusableButton
               name="Register now!"
               width={250}
-              onClick={handleNavigation}
+              onClick={() => goTo("user-registeration")}
             />
             <Navigator
               message="Already registered? "
