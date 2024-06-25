@@ -18,10 +18,7 @@ const connectToMongoDB = async () => {
   )}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
   try {
-    await mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(mongoURI);
     console.log("Database connected! 👍");
   } catch (error) {
     console.log("Database connection error:", error.message);

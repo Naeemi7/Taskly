@@ -8,7 +8,7 @@ import { StatusCodes } from "http-status-codes";
  * @param {*} next
  * @returns
  */
-export const expressValidator = (req, res, next) => {
+export const userValidator = (req, res, next) => {
   // Extract the validation error from the request object
   const errors = validationResult(req);
 

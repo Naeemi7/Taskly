@@ -1,5 +1,5 @@
 import { StatusCodes } from "http-status-codes";
-import { verifyJwt } from "../helpers/jwt";
+import { verifyJwt } from "../helpers/jwt.js";
 
 export const authenticateUser = async (req, res, next) => {
   const token = req.cookies.userToken;
