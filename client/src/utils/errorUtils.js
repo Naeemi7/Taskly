@@ -1,3 +1,5 @@
+import showToast from "@reusable/Toast";
+
 export const logBuddy = (message = "logBuddy", data) => {
   if (import.meta.env.MODE === "development") {
     console.log("LogBuddy 🚀 ", message, data || "");
@@ -10,47 +12,37 @@ export const logError = (message = "Error", error) => {
   }
 };
 
-export const handleUnauthorizedError = (error, setError) => {
-  if (error.response && error.response.status === 401) {
-    const errorMessage =
-      error.response.data.error || "Unauthorized: General error";
-    setError(errorMessage);
-    logError(errorMessage, error);
-  } else {
-    throw error;
-  }
-};
-
-export const handleNotFoundError = (error, setError) => {
-  if (error.response && error.response.status === 404) {
-    const errorMessage = error.response.data.error || "The user is Not Found";
-    setError(errorMessage);
-    logError(errorMessage, error);
-  } else {
-    throw error;
-  }
-};
-
-export const handleServerError = (error, setError) => {
-  if (
-    error.response &&
-    error.response.status >= 500 &&
-    error.response.status < 600
-  ) {
-    const errorMessage = error.response.data.error || "Server error";
-    setError(errorMessage);
-    logError(errorMessage, error);
-  } else {
-    throw error;
-  }
-};
-
-export const handleNetworkError = (error, setError) => {
+export const handleError = (error, setError) => {
   if (!error.response) {
     const errorMessage = "Network Error";
     setError(errorMessage);
     logError(errorMessage, error);
-  } else {
-    throw error;
+    showToast(errorMessage, "error");
+    return;
   }
+
+  const { status, data } = error.response;
+
+  let errorMessage = data.error || "An error occurred";
+
+  switch (status) {
+    case 401:
+      errorMessage =
+        data.message === "Incorrect password"
+          ? "Incorrect password"
+          : "Unauthorized: General error";
+      break;
+    case 404:
+      errorMessage = "Email not found";
+      break;
+    case 500:
+      errorMessage = "Server error";
+      break;
+    default:
+      break;
+  }
+
+  setError(errorMessage);
+  logError(errorMessage, error);
+  showToast(errorMessage, "error");
 };

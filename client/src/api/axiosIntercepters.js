@@ -25,9 +25,8 @@ export const setupInterceptors = () => {
 
       // Handle 401 errors
       if (error.response && error.response.status === 401) {
-        if (error.response.data.error === "Invalid credentials") {
-          // Do nothing for 'invalid credentials' error
-          logError("401 intercepter exeption: invalid credentials");
+        if (error.response.data.error === "Incorrect password") {
+          logError("401 intercepter exeption: incorrect password");
         } else {
           // Handle other 401 errors
           // logError("401 intercepter:", error.response.data.error);

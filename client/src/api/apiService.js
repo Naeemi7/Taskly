@@ -1,13 +1,5 @@
 import api from "./axiosConfig";
-import {
-  handleUnauthorizedError,
-  handleNotFoundError,
-  handleServerError,
-  handleNetworkError,
-  logError,
-} from "@utils/errorUtils";
-
-let errorMessage;
+import { handleError, logError } from "@utils/errorUtils";
 
 const service = async (method, url, data = null, setError) => {
   try {
@@ -19,26 +11,7 @@ const service = async (method, url, data = null, setError) => {
     return response.data;
   } catch (error) {
     logError("Full error object:", error);
-
-    if (error.response) {
-      switch (error.response.status) {
-        case 401:
-          handleUnauthorizedError(error, setError);
-          break;
-        case 404:
-          handleNotFoundError(error, setError);
-          break;
-        case 500:
-          handleServerError(error, setError);
-          break;
-        default:
-          errorMessage = error.response.data.error || "An error occurred";
-          setError(errorMessage);
-          logError("Unhandled API Error:", error);
-      }
-    } else {
-      handleNetworkError(error, setError);
-    }
+    handleError(error, setError);
     throw error;
   }
 };
