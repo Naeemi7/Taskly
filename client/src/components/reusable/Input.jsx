@@ -3,10 +3,9 @@ import "@styles/reusableComponents.scss";
 
 export default function ReusableInput({
   labelName,
-  inputType = "text",
+  type = "text",
   name = "",
   placeholder = "",
-  onChange,
   className = "",
 }) {
   return (
@@ -17,10 +16,9 @@ export default function ReusableInput({
       <input
         className={className}
         id={labelName.replace(" ", "-").toLowerCase()}
-        type={inputType}
+        type={type}
         placeholder={placeholder}
         name={name}
-        onChange={onChange}
       />
     </div>
   );
@@ -28,9 +26,8 @@ export default function ReusableInput({
 
 ReusableInput.propTypes = {
   labelName: PropTypes.string.isRequired,
-  inputType: PropTypes.string,
+  type: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
   className: PropTypes.string,
 };

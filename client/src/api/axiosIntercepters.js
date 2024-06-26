@@ -1,13 +1,12 @@
-import { api } from "./axiosInstance";
+import { api } from "./axiosConfig";
 import { logBuddy } from "@utils/errorUtils";
 
 // Function to step intercepters
-export const setupAPIInterceptors = () => {
+export const setupInterceptors = () => {
   // Request intercepters
   api.interceptors.request.use(
     (req) => {
       logBuddy(" A request has been made");
-
       return req;
     },
     (error) => {
@@ -19,7 +18,6 @@ export const setupAPIInterceptors = () => {
   api.interceptors.response.use(
     (res) => {
       logBuddy("A response has been recieved");
-
       return res;
     },
     (error) => {

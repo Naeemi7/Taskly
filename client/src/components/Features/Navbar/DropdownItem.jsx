@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import ReusableIcon from "@reusable/ReusableIcon";
+import Icon from "@reusable/Icon";
 
 const DropdownItem = ({ item }) => {
   return (
     <Link to={item.to} className="dropdown-link-items">
       <li>
-        <ReusableIcon
+        <Icon
           library={item.library}
           name={item.name}
           size={item.size}

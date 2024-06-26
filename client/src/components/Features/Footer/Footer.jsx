@@ -1,5 +1,5 @@
 import useNavigator from "@hooks/useNavigator";
-import ReusableIcon from "@reusable/ReusableIcon";
+import Icon from "@reusable/Icon";
 import useUserContext from "@hooks/useUserContext";
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
     <div className="footer-container">
       <footer className={isLoggedIn ? "authorized" : "unauthorized"}>
         {isLoggedIn ? (
-          <ReusableIcon
+          <Icon
             library="ri"
             name="RiAddCircleFill"
             className="add-task-button"
@@ -19,7 +19,7 @@ const Footer = () => {
         ) : (
           <div className="unauthorized-footer">
             <a href="https://github.com/Naeemi7" target="_black">
-              <ReusableIcon
+              <Icon
                 library="fa"
                 name="FaGithub"
                 className="social-icons"
@@ -30,7 +30,7 @@ const Footer = () => {
               href="https://www.linkedin.com/in/abdulwase-naeemi/"
               target="_black"
             >
-              <ReusableIcon
+              <Icon
                 library="fa"
                 name="FaLinkedin"
                 className="social-icons"

@@ -1,5 +1,5 @@
 import useUserContext from "@hooks/useUserContext";
-import ReusableButton from "@reusable/ReusableButton";
+import Button from "@reusable/Button";
 import Navigator from "@reusable/Navigator";
 import useNavigator from "@hooks/useNavigator";
 import landingImage from "@images/main/taskly-landing.png";
@@ -20,7 +20,7 @@ const Main = () => {
               Organize your projects, collaborate with your team, and stay on
               top of your deadlines.
             </h4>
-            <ReusableButton
+            <Button
               name="Register now!"
               width={250}
               onClick={() => goTo("user-registeration")}

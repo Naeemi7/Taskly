@@ -1,7 +1,7 @@
 import Greetings from "./Greetings";
 import Profile from "./Profile";
 import Logo from "./Logo";
-import ReusableButton from "@reusable/ReusableButton";
+import Button from "@reusable/Button";
 import useUserContext from "@hooks/useUserContext";
 import useNavigator from "@hooks/useNavigator";
 
@@ -19,11 +19,7 @@ const Navbar = () => {
           <Profile />
         </>
       ) : (
-        <ReusableButton
-          name="Login"
-          width={80}
-          onClick={() => goTo("/user-login")}
-        />
+        <Button name="Login" width={80} onClick={() => goTo("/user-login")} />
       )}
     </div>
   );

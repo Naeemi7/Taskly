@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ReusableIcon from "@reusable/ReusableIcon";
+import Icon from "@reusable/Icon";
 import reactIconsData from "@data/reactIconsData";
 import DropdownItem from "./DropdownItem";
 
@@ -20,7 +20,7 @@ const Profile = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <ReusableIcon
+      <Icon
         library="pi"
         name="PiUserCircleGearFill"
         size={24}

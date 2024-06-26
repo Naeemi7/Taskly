@@ -1,16 +1,11 @@
 import { useState } from "react";
-import ReusableInput from "@reusable/ReusableInput";
-import ReusableButton from "@reusable/ReusableButton";
-import ReusableIcon from "@reusable/ReusableIcon";
+import Input from "@reusable/Input";
+import Button from "@reusable/Button";
+import Icon from "@reusable/Icon";
 import Navigator from "@reusable/Navigator";
 import usePasswordVisibility from "@hooks/usePasswordVisibility";
 
 const UserRegisteration = () => {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(false);
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility();
 
@@ -28,7 +23,7 @@ const UserRegisteration = () => {
       password: formData.get("password"),
     };
 
-    const confirmedPassword = formData.get("confirm-password");
+    // const confirmedPassword = formData.get("confirm-password");
 
     if (data.password !== confirmPassword) {
       setConfirmPassword(false);
@@ -45,53 +40,48 @@ const UserRegisteration = () => {
 
         <form onSubmit={handleFormSubmit}>
           {/* Input for the firstname */}
-          <ReusableInput
+          <Input
             labelName="Firstname"
-            inputType="text"
-            name={firstname}
+            type="text"
+            name="firstname"
             placeholder="Enter your firstname"
-            onChange={(e) => setFirstname(e.target.value)}
           />
 
           {/* Input for lastname */}
-          <ReusableInput
+          <Input
             labelName="Lastname"
-            inputType="text"
-            name={lastname}
+            type="text"
+            name="lastname"
             placeholder="Enter your lastname"
-            onChange={(e) => setLastname(e.target.value)}
           />
 
           {/* Input for username */}
-          <ReusableInput
+          <Input
             labelName="Username"
-            inputType="text"
-            name={username}
+            type="text"
+            name="username"
             placeholder="Enter your username"
-            onChange={(e) => setUsername(e.target.value)}
           />
 
           {/* Input for email */}
-          <ReusableInput
+          <Input
             labelName="Email"
-            inputType="email"
-            name={email}
+            type="email"
+            name="email"
             placeholder="Enter your email"
-            onChange={(e) => setEmail(e.target.value)}
           />
 
           {/* Inputer for password */}
           <div className="password-input">
-            <ReusableInput
+            <Input
               labelName="Password *"
-              inputType={showPassword ? "text" : "password"}
-              name={password}
+              type={showPassword ? "text" : "password"}
+              name="password"
               placeholder="Enter your password"
-              onChange={(e) => setPassword(e.target.value)}
             />
 
             {/* Reusable Icon component for displaying icons and making the password visibale */}
-            <ReusableIcon
+            <Icon
               library="fa"
               name={showPassword ? "FaEyeSlash" : "FaEye"}
               className="hide-and-show-pass"
@@ -101,23 +91,22 @@ const UserRegisteration = () => {
 
           {/* Input for confirm password */}
           <div className="password-input">
-            <ReusableInput
+            <Input
               labelName="Confirm password"
-              inputType={showPassword ? "text" : "password"}
-              name={confirmPassword}
+              type={showPassword ? "text" : "password"}
+              name="confirmPassword"
               placeholder="Confirm your password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
             />
 
             {/* Reusable Icon component for displaying icons and making the password visibale */}
-            <ReusableIcon
+            <Icon
               library="fa"
               name={showPassword ? "FaEyeSlash" : "FaEye"}
               className="hide-and-show-pass"
               onClick={togglePasswordVisibility}
             />
           </div>
-          <ReusableButton name="Register" />
+          <Button name="Register" />
 
           <Navigator
             message="Already signed up? "

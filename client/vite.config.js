@@ -18,6 +18,7 @@ export default defineConfig({
       "@styles": `${currentWorkingDirectory}/src/styles`,
       "@images": `${currentWorkingDirectory}/src/assets/images`,
       "@utils": `${currentWorkingDirectory}/src/utils`,
+      "@api": `${currentWorkingDirectory}/src/api`,
       "@data": `${currentWorkingDirectory}/src/data`,
       "@context": `${currentWorkingDirectory}/src/context`,
       "@hooks": `${currentWorkingDirectory}/src/hooks`,
