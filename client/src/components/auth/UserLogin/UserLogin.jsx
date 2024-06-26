@@ -2,20 +2,20 @@ import { useNavigate } from "react-router-dom";
 import Input from "@reusable/Input";
 import Button from "@reusable/Button";
 import Icon from "@reusable/Icon";
+import AlertBox from "@reusable/AlertBox";
 import Navigator from "@reusable/Navigator";
 import usePasswordVisibility from "@hooks/usePasswordVisibility";
 import useUserContext from "@hooks/useUserContext";
 import { logBuddy, logError } from "@utils/errorUtils";
 
 const UserLogin = () => {
-  const navigate = useNavigate("");
+  const navigate = useNavigate();
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility();
-  const { loginUser } = useUserContext();
+  const { loginUser, error } = useUserContext();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Extract form data
     const formData = new FormData(e.target);
     const data = {
       email: formData.get("email"),
@@ -23,17 +23,13 @@ const UserLogin = () => {
     };
 
     try {
-      // Attempt user login
       await loginUser(data);
-
       logBuddy(data);
 
-      setTimeout(() => {
-        navigate("/");
-      });
+      navigate("/add-task");
+      // navigate("/");
     } catch (error) {
-      // Handle Errors
-      logError(error);
+      logError(error.status);
     }
   };
 
@@ -43,7 +39,6 @@ const UserLogin = () => {
         <h2>Login</h2>
 
         <form onSubmit={handleLogin}>
-          {/* Input for email */}
           <Input
             labelName="Email *"
             type="email"
@@ -52,7 +47,6 @@ const UserLogin = () => {
             required
           />
 
-          {/* Inputer for password */}
           <div className="password-input">
             <Input
               labelName="Password *"
@@ -61,8 +55,6 @@ const UserLogin = () => {
               placeholder="Enter your password"
               required
             />
-
-            {/* Reusable Icon component for displaying icons and making the password visibale */}
             <Icon
               library="fa"
               name={showPassword ? "FaEyeSlash" : "FaEye"}
@@ -71,12 +63,12 @@ const UserLogin = () => {
             />
           </div>
 
-          <p>Test</p>
+          {error && <AlertBox message={error} />}
+
           <Button name="Login" type="submit" />
 
           <Navigator
-            message="No account yet?
-        "
+            message="No account yet?"
             pathName="Register"
             pathUrl="/user-registeration"
           />

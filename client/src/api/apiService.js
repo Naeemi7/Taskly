@@ -7,6 +7,8 @@ import {
   logError,
 } from "@utils/errorUtils";
 
+let errorMessage;
+
 // Reusable function to handle requests
 const service = async (method, url, data = null, setError) => {
   try {
@@ -17,38 +19,49 @@ const service = async (method, url, data = null, setError) => {
     });
     return response.data;
   } catch (error) {
-    // Pass the error to specific error handlers based on the error type
-    handleUnauthorizedError(error, setError);
-    handleNotFoundError(error, setError);
-    handleServerError(error, setError);
-    handleNetworkError(error, setError);
+    // Log the full error object to inspect its structure
+    logError("Full error object:", error);
 
-    // Log any other errors
-    logError("API Error:", error);
+    if (error.response) {
+      switch (error.response.status) {
+        case 401:
+          handleUnauthorizedError(error, setError);
+          break;
+        case 404:
+          handleNotFoundError(error, setError);
+          break;
+        case 500:
+          handleServerError(error, setError);
+          break;
+        default:
+          errorMessage = error.response.data.error || "An error occurred";
+          setError(errorMessage);
+          logError("Unhandled API Error:", error);
+      }
+    } else {
+      handleNetworkError(error, setError);
+    }
+    throw error;
   }
 };
 
-// GET request
+// Exported functions for different HTTP methods
 export const get = async (url, setError) => {
   return service("get", url, null, setError);
 };
 
-// POST request
 export const post = async (url, data, setError) => {
   return service("post", url, data, setError);
 };
 
-// PUT request
 export const put = async (url, data, setError) => {
   return service("put", url, data, setError);
 };
 
-// DELETE request
 export const remove = async (url, setError) => {
-  return service("delete", url, setError);
+  return service("delete", url, null, setError);
 };
 
-// PATCH request
 export const patch = async (url, data, setError) => {
   return service("patch", url, data, setError);
 };

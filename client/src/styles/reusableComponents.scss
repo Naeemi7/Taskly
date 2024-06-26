@@ -47,3 +47,18 @@ form {
     margin-top: -10px;
   }
 }
+
+// Alert box styles
+.alert-box {
+  color: $error-color; /* Replace with your actual color variable or value */
+  animation: alertAnimation 1s infinite alternate; /* Adjust animation duration and type as needed */
+}
+
+@keyframes alertAnimation {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

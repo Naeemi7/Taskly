@@ -5,7 +5,7 @@ import { post } from "@api/apiService";
 import { logBuddy, logError } from "@utils/errorUtils";
 
 export default function UserProvider({ children }) {
-  // Retrive the user data from localStroage
+  // Retrieve the user data from localStorage
   const storedUser = JSON.parse(localStorage.getItem("user")) || null;
 
   // State variables for user authentication
@@ -15,10 +15,7 @@ export default function UserProvider({ children }) {
 
   const loginUser = async (data) => {
     try {
-      // CLear previous errors
-      setError("");
-
-      const response = await post("/user/login", data, setError);
+      const response = await post("/api/user/login", data, setError);
       logBuddy(response.user);
 
       // Update state and localStorage on successful login
@@ -28,8 +25,12 @@ export default function UserProvider({ children }) {
     } catch (error) {
       // Log any unexpected errors
       logError("Login Error:", error);
+      setError(error);
+
+      console.log("I am from provider", error);
     }
   };
+
   return (
     <UserContext.Provider
       value={{
