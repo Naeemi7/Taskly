@@ -62,3 +62,19 @@ form {
     opacity: 0.5;
   }
 }
+
+// Style for the reusable custom toast
+// styles/ToastStyles.scss
+.custom-toast {
+  font-size: 16px; // Set the font size
+  background-color: #333; // Customize background color
+  color: #fff; // Customize text color
+  padding: 10px 20px; // Customize padding
+  border-radius: 5px; // Customize border radius
+  text-align: center; // Center the text
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Add a shadow for better visibility
+}
+
+.custom-toast .toast-icon {
+  margin-right: 10px; // Add space between icon and text
+}

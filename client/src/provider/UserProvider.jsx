@@ -20,6 +20,12 @@ export default function UserProvider({ children }) {
       localStorage.setItem("user", JSON.stringify(response.user));
     } catch (error) {
       logError("Login Error:", error);
+      setError(
+        error.response?.data?.error ||
+          error.message ||
+          "An error occurred during login"
+      );
+      throw error;
     }
   };
 

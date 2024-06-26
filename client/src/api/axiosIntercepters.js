@@ -30,8 +30,8 @@ export const setupInterceptors = () => {
           logError("401 intercepter exeption: invalid credentials");
         } else {
           // Handle other 401 errors
-          logError("401 intercepter:", error.response.data.error);
-          window.location.href = "/user-logout";
+          // logError("401 intercepter:", error.response.data.error);
+          // window.location.href = "/user-logout";
 
           return Promise.reject(error);
         }

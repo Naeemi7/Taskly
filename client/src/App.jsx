@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import "@styles/App.scss";
 import { setupInterceptors } from "@api/axiosIntercepters";
 import UserProvider from "@provider/UserProvider";
@@ -32,6 +33,7 @@ function App() {
           <Route path="/user-registeration" element={<UserRegisteration />} />
         </Routes>
         <Footer />
+        <Toaster />
       </UserProvider>
     </div>
   );

@@ -7,6 +7,7 @@ import Navigator from "@reusable/Navigator";
 import usePasswordVisibility from "@hooks/usePasswordVisibility";
 import useUserContext from "@hooks/useUserContext";
 import { logBuddy, logError } from "@utils/errorUtils";
+import showToast from "@reusable/Toast";
 
 const UserLogin = () => {
   const navigate = useNavigate();
@@ -27,10 +28,15 @@ const UserLogin = () => {
     try {
       await loginUser(data);
       logBuddy(data);
-      navigate("/add-task");
+      showToast("Logged in successfully!", "success");
+
+      setTimeout(() => {
+        navigate("/add-task");
+      }, 1500);
     } catch (error) {
       logError(error);
       // Error message is already set in the context, no need to handle here
+      showToast(error.message || "An error occurred during login", "error");
     }
   };
 

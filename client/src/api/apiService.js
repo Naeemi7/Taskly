@@ -7,6 +7,8 @@ import {
   logError,
 } from "@utils/errorUtils";
 
+let errorMessage;
+
 const service = async (method, url, data = null, setError) => {
   try {
     const response = await api({
@@ -30,7 +32,7 @@ const service = async (method, url, data = null, setError) => {
           handleServerError(error, setError);
           break;
         default:
-          const errorMessage = error.response.data.error || "An error occurred";
+          errorMessage = error.response.data.error || "An error occurred";
           setError(errorMessage);
           logError("Unhandled API Error:", error);
       }
