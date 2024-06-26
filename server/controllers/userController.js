@@ -54,22 +54,22 @@ export const loginUser = async (req, res) => {
     // Find the user with the provided lowercase email
     const user = await User.findOne({ email: lowercaseEmail });
 
-    // Throw a bad request error if the credentials are invalid
+    // If the user is not found, return a 404 Not Found status
     if (!user) {
       return res
-        .status(StatusCodes.BAD_REQUEST)
-        .json({ message: "Invalid user credentials" });
+        .status(StatusCodes.NOT_FOUND)
+        .json({ message: "Email not found" });
     }
 
-    // compare the provided password with the hashed password in the database
+    // Compare the provided password with the hashed password in the database
     const matchedPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
 
-    // Check if the password matches
+    // If the password matches
     if (matchedPassword) {
-      // Generates a token for the user
+      // Generate a token for the user
       const token = generateJwt(user._id);
 
       // Set the token as an HTTP-only cookie
@@ -90,9 +90,10 @@ export const loginUser = async (req, res) => {
         },
       });
     } else {
+      // If the password is incorrect, return a 401 Unauthorized status
       return res
         .status(StatusCodes.UNAUTHORIZED)
-        .json({ message: "Invalid Credentials." });
+        .json({ message: "Incorrect password" });
     }
   } catch (error) {
     // Handle any unexpected errors
