@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import UserContext from "@context/UserContext";
-import { post } from "@api/apiService";
+import { post, get } from "@api/apiService";
 import { logBuddy, logError } from "@utils/errorUtils";
 
 export default function UserProvider({ children }) {
@@ -52,6 +52,24 @@ export default function UserProvider({ children }) {
     }
   }, [storedUser]);
 
+  const logoutUser = async () => {
+    try {
+      await get("/user/logout");
+
+      // Update state and remove user data from localStorage after logout
+      setIsLoggedIn(false);
+      localStorage.removeItem("user");
+      logBuddy("Logout successfully done");
+    } catch (error) {
+      setError("Logout Error", error);
+      setError(
+        error.response?.data.error ||
+          error.message ||
+          "An error occurred during logout"
+      );
+      throw error;
+    }
+  };
   return (
     <UserContext.Provider
       value={{
@@ -61,6 +79,7 @@ export default function UserProvider({ children }) {
         error,
         setError,
         loginUser,
+        logoutUser,
       }}
     >
       {children}

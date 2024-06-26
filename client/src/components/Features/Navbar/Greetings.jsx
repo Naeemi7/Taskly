@@ -1,7 +1,15 @@
 import DisplayGreeting from "@utils/DisplayGreeting";
+import useUserContext from "@hooks/useUserContext";
 
 const Greetings = () => {
-  return <h1 className="greeting">👋 {DisplayGreeting()}, User</h1>;
+  const { user } = useUserContext();
+
+  console.log(user);
+  return (
+    <h1 className="greeting">
+      👋 {DisplayGreeting()}, {user.username}
+    </h1>
+  );
 };
 
 export default Greetings;
