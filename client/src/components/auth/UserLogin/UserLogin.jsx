@@ -11,7 +11,7 @@ import { logBuddy, logError } from "@utils/errorUtils";
 const UserLogin = () => {
   const navigate = useNavigate();
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility();
-  const { loginUser, error } = useUserContext();
+  const { loginUser, error, setError } = useUserContext();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,14 +22,15 @@ const UserLogin = () => {
       password: formData.get("password"),
     };
 
+    setError(""); // Clear previous error before login attempt
+
     try {
       await loginUser(data);
       logBuddy(data);
-
       navigate("/add-task");
-      // navigate("/");
     } catch (error) {
-      logError(error.status);
+      logError(error);
+      // Error message is already set in the context, no need to handle here
     }
   };
 
@@ -37,7 +38,6 @@ const UserLogin = () => {
     <div className="main-container">
       <div className="user-login-container">
         <h2>Login</h2>
-
         <form onSubmit={handleLogin}>
           <Input
             labelName="Email *"
@@ -46,7 +46,6 @@ const UserLogin = () => {
             placeholder="Enter your email"
             required
           />
-
           <div className="password-input">
             <Input
               labelName="Password *"
@@ -62,15 +61,12 @@ const UserLogin = () => {
               onClick={togglePasswordVisibility}
             />
           </div>
-
           {error && <AlertBox message={error} />}
-
           <Button name="Login" type="submit" />
-
           <Navigator
             message="No account yet?"
             pathName="Register"
-            pathUrl="/user-registeration"
+            pathUrl="/user-registration"
           />
         </form>
       </div>

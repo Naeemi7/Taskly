@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
 import "@styles/App.scss";
+import { setupInterceptors } from "@api/axiosIntercepters";
 import UserProvider from "@provider/UserProvider";
 import ProtectedRoutes from "@auth/ProtectedRoutes/ProtectedRoutes";
 import Navbar from "@features/Navbar/Navbar";
@@ -10,6 +12,10 @@ import AddTask from "@features/AddTask/AddTask";
 import Footer from "@features/Footer/Footer";
 
 function App() {
+  useEffect(() => {
+    setupInterceptors();
+  }, []);
+
   return (
     <div className="app">
       <UserProvider>

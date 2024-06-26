@@ -1,5 +1,5 @@
 import { api } from "./axiosConfig";
-import { logBuddy } from "@utils/errorUtils";
+import { logBuddy, logError } from "@utils/errorUtils";
 
 // Function to step intercepters
 export const setupInterceptors = () => {
@@ -21,16 +21,16 @@ export const setupInterceptors = () => {
       return res;
     },
     (error) => {
-      logBuddy("Error response has been recieved", error.response);
+      logError("Error response has been recieved", error.response);
 
       // Handle 401 errors
       if (error.response && error.response.status === 401) {
         if (error.response.data.error === "Invalid credentials") {
           // Do nothing for 'invalid credentials' error
-          logBuddy("401 intercepter exeption: invalid credentials");
+          logError("401 intercepter exeption: invalid credentials");
         } else {
           // Handle other 401 errors
-          logBuddy("401 intercepter:", error.response.data.error);
+          logError("401 intercepter:", error.response.data.error);
           window.location.href = "/user-logout";
 
           return Promise.reject(error);
