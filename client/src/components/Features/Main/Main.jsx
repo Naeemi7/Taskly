@@ -11,7 +11,12 @@ const Main = () => {
   return (
     <div className="main-container">
       {isLoggedIn ? (
-        <h2>main compoent</h2>
+        <div className="main-without-tasks">
+          <h4>You don&apos;t have any tasks yet</h4>
+          <p>
+            Click on the <strong>+</strong> button to add one
+          </p>
+        </div>
       ) : (
         <div className="unprotected-main">
           <div className="unprotected-main-content">

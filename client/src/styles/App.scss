@@ -111,6 +111,14 @@ body {
     display: flex;
     justify-content: center;
 
+    // Main component when there is no tasks
+    .main-without-tasks {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     // Main Component landing page style
     .unprotected-main {
       display: flex;
@@ -235,7 +243,21 @@ body {
       justify-content: flex-end;
 
       .add-task-button {
-        @include icon-template;
+        @include icon-template; /* Assuming icon-template is a mixin for common styles */
+
+        /* Animation */
+        animation: popup 1s infinite alternate ease-in-out;
+        background-color: $structure-elements-light-color;
+        border-radius: 100%;
+
+        @keyframes popup {
+          0% {
+            transform: scale(1);
+          }
+          100% {
+            transform: scale(1.1);
+          }
+        }
       }
     }
 
