@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom";
+import useNavigation from "@hooks/useNavigation";
 import Input from "@reusable/Input";
 import Button from "@reusable/Button";
 import Icon from "@reusable/Icon";
 import AlertBox from "@reusable/AlertBox";
-import Navigator from "@reusable/Navigator";
+import AuthLink from "@reusable/AuthLink";
 import usePasswordVisibility from "@hooks/usePasswordVisibility";
 import useUserContext from "@hooks/useUserContext";
 import { logBuddy, handleError } from "@utils/errorUtils";
-import showToast from "@reusable/Toast";
+import ShowToast from "@reusable/Toast";
 
 const UserLogin = () => {
-  const navigate = useNavigate();
+  const { goTo } = useNavigation();
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility();
   const { loginUser, error, setError } = useUserContext();
 
@@ -28,10 +28,10 @@ const UserLogin = () => {
     try {
       await loginUser(data);
       logBuddy(data);
-      showToast("Logged in successfully!", "success");
+      ShowToast("Logged in successfully!", "success");
 
       setTimeout(() => {
-        navigate("/");
+        goTo("/");
       }, 1500);
     } catch (error) {
       // Ensure handleError is called only once and does not cause multiple toasts
@@ -71,7 +71,7 @@ const UserLogin = () => {
           </div>
           {error && <AlertBox message={error} />}
           <Button name="Login" type="submit" />
-          <Navigator
+          <AuthLink
             message="No account yet?"
             pathName="Register"
             pathUrl="/user-registeration"

@@ -1,10 +1,10 @@
-import useNavigator from "@hooks/useNavigator";
+import useNavigation from "@hooks/useNavigation";
 import Icon from "@reusable/Icon";
 import useUserContext from "@hooks/useUserContext";
 
 const Footer = () => {
   const { isLoggedIn } = useUserContext();
-  const goTo = useNavigator();
+  const { goTo } = useNavigation();
 
   return (
     <div className="footer-container">

@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import "@styles/reusableComponents.scss";
 
-const showToast = (message, type = "success") => {
+export default function ShowToast(message, type = "success") {
   const options = {
     position: "top-right",
     duration: 4000,
@@ -21,6 +21,4 @@ const showToast = (message, type = "success") => {
     default:
       toast(message, options);
   }
-};
-
-export default showToast;
+}

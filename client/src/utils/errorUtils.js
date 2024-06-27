@@ -1,4 +1,4 @@
-import showToast from "@reusable/Toast";
+import ShowToast from "@reusable/Toast";
 
 export const logBuddy = (message = "logBuddy", data) => {
   if (import.meta.env.MODE === "development") {
@@ -17,7 +17,7 @@ export const handleError = (error, setError) => {
     const errorMessage = "Network Error";
     setError(errorMessage);
     logError(errorMessage, error);
-    showToast(errorMessage, "error");
+    ShowToast(errorMessage, "error");
     return;
   }
 
@@ -47,7 +47,7 @@ export const handleError = (error, setError) => {
 
   // Ensure to show toast only once per error instance
   if (!error.handled) {
-    showToast(errorMessage, "error");
+    ShowToast(errorMessage, "error");
     error.handled = true;
   }
 };

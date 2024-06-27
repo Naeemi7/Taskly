@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navigator = ({ message = "", pathName = "", pathUrl = "" }) => {
+export default function AuthLink({
+  message = "",
+  pathName = "",
+  pathUrl = "",
+}) {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -34,12 +38,10 @@ const Navigator = ({ message = "", pathName = "", pathUrl = "" }) => {
       </p>
     </div>
   );
-};
+}
 
-Navigator.propTypes = {
+AuthLink.propTypes = {
   message: PropTypes.string,
   pathName: PropTypes.string,
   pathUrl: PropTypes.string,
 };
-
-export default Navigator;

@@ -3,11 +3,11 @@ import Profile from "./Profile";
 import Logo from "./Logo";
 import Button from "@reusable/Button";
 import useUserContext from "@hooks/useUserContext";
-import useNavigator from "@hooks/useNavigator";
+import useNavigation from "@hooks/useNavigation";
 
 const Navbar = () => {
   const { isLoggedIn } = useUserContext();
-  const goTo = useNavigator();
+  const goTo = useNavigation();
 
   return (
     <div className="navbar-container">

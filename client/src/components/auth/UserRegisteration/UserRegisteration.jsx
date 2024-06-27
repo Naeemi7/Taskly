@@ -2,7 +2,7 @@ import { useState } from "react";
 import Input from "@reusable/Input";
 import Button from "@reusable/Button";
 import Icon from "@reusable/Icon";
-import Navigator from "@reusable/Navigator";
+import AuthLink from "@reusable/AuthLink";
 import usePasswordVisibility from "@hooks/usePasswordVisibility";
 import { post } from "@api/apiService";
 import useUserContext from "@hooks/useUserContext";
@@ -117,7 +117,7 @@ const UserRegisteration = () => {
           </div>
           <Button name="Register" />
 
-          <Navigator
+          <AuthLink
             message="Already signed up? "
             pathName="Login"
             pathUrl="/user-login"

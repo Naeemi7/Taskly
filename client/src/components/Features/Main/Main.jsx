@@ -1,12 +1,12 @@
 import useUserContext from "@hooks/useUserContext";
 import Button from "@reusable/Button";
-import Navigator from "@reusable/Navigator";
-import useNavigator from "@hooks/useNavigator";
+import AuthLink from "@reusable/AuthLink";
+import useNavigation from "@hooks/useNavigation";
 import landingImage from "@images/main/taskly-landing.png";
 
 const Main = () => {
   const { isLoggedIn } = useUserContext();
-  const goTo = useNavigator();
+  const { goTo } = useNavigation();
 
   return (
     <div className="main-container">
@@ -25,7 +25,7 @@ const Main = () => {
               width={250}
               onClick={() => goTo("user-registeration")}
             />
-            <Navigator
+            <AuthLink
               message="Already registered? "
               pathName="Login"
               pathUrl="/user-login"
