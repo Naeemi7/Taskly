@@ -24,7 +24,7 @@ export const handleError = (error, setError) => {
     const { status, data } = error.response;
 
     // Log the entire data for debugging purposes
-    console.log("Error data:", data);
+    logError("Error data:", data);
 
     // Handle errors based on status codes or specific error codes from backend
     switch (status) {
