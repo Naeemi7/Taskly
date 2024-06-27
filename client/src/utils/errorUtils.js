@@ -12,126 +12,74 @@ export const logError = (message = "Error", error) => {
   }
 };
 
-// Set to track shown error message
+// Set to track shown error messages
 const shownErrors = new Set();
 
+const showError = (message, setError) => {
+  setError(message);
+
+  if (!shownErrors.has(message)) {
+    ShowToast(message, "error");
+    shownErrors.add(message);
+
+    // Clear shownErrors after 5 seconds
+    setTimeout(() => {
+      shownErrors.delete(message);
+    }, 5000);
+  }
+};
+
 export const handleError = (error, setError) => {
-  let errorMessage = "";
-
   if (!error.response) {
-    errorMessage = "Network Error";
-  } else {
-    const { status, data } = error.response;
+    showError("Network Error", setError);
+    return;
+  }
 
-    // Log the entire data for debugging purposes
-    logError("Error data:", data);
+  const { status, data } = error.response;
 
-    // Handle errors based on status codes or specific error codes from backend
-    switch (status) {
-      case 400:
-        if (data.errors && data.errors.length > 0) {
-          // Iterate through each error in data.errors
-          data.errors.forEach((errorItem) => {
-            switch (errorItem.code) {
-              case "01":
-                errorMessage = "Names should only contain letters";
-                break;
-              case "02":
-                errorMessage = "Username is already taken";
-                break;
-              case "03":
-                errorMessage = "Email is already registered";
-                break;
-              case "04":
-                errorMessage = "Password doesn't meet the requirements";
-                break;
-              default:
-                errorMessage = errorItem.msg || "Validation error";
-                break;
-            }
+  // Log the entire data for debugging purposes
+  logError("Error data:", data);
 
-            // Set error message to state
-            setError(errorMessage);
+  const errorMapping = {
+    "01": "Names should only contain letters",
+    "02": "Username is already taken",
+    "03": "Email is already registered",
+    "04": "Password doesn't meet the requirements",
+  };
 
-            // Show toast with the error message if it hasn't been shown already
-            if (!shownErrors.has(errorMessage)) {
-              ShowToast(errorMessage, "error");
-              shownErrors.add(errorMessage);
-            } else {
-              // Clear shownErrors after 5 seconds (adjust as needed)
-              setTimeout(() => {
-                shownErrors.delete(errorMessage);
-              }, 5000);
-            }
-          });
-        } else {
-          // Handle generic 400 error
-          errorMessage = data.error || "Validation error";
-          setError(errorMessage);
+  let errorMessage = "An error occurred";
 
-          // Show toast with the error message if it hasn't been shown already
-          if (!shownErrors.has(errorMessage)) {
-            ShowToast(errorMessage, "error");
-            shownErrors.add(errorMessage);
-          } else {
-            // Clear shownErrors after 5 seconds
-            setTimeout(() => {
-              shownErrors.delete(errorMessage);
-            }, 5000);
-          }
-        }
-        break;
-      case 401:
-        errorMessage =
-          data.message === "Incorrect password"
-            ? "Incorrect password"
-            : "Unauthorized: General error";
-        setError(errorMessage);
-        if (!shownErrors.has(errorMessage)) {
-          ShowToast(errorMessage, "error");
-          shownErrors.add(errorMessage);
-        } else {
-          setTimeout(() => {
-            shownErrors.delete(errorMessage);
-          }, 5000);
-        }
-        break;
-      case 404:
-        errorMessage = "Email not found";
-        setError(errorMessage);
-        if (!shownErrors.has(errorMessage)) {
-          ShowToast(errorMessage, "error");
-          shownErrors.add(errorMessage);
-        } else {
-          setTimeout(() => {
-            shownErrors.delete(errorMessage);
-          }, 5000);
-        }
-        break;
-      case 500:
-        errorMessage = "Server error";
-        setError(errorMessage);
-        if (!shownErrors.has(errorMessage)) {
-          ShowToast(errorMessage, "error");
-          shownErrors.add(errorMessage);
-        } else {
-          setTimeout(() => {
-            shownErrors.delete(errorMessage);
-          }, 5000);
-        }
-        break;
-      default:
-        errorMessage = data.error || "An error occurred";
-        setError(errorMessage);
-        if (!shownErrors.has(errorMessage)) {
-          ShowToast(errorMessage, "error");
-          shownErrors.add(errorMessage);
-        } else {
-          setTimeout(() => {
-            shownErrors.delete(errorMessage);
-          }, 5000);
-        }
-        break;
-    }
+  switch (status) {
+    case 400:
+      if (data.errors && data.errors.length > 0) {
+        data.errors.forEach((errorItem) => {
+          errorMessage =
+            errorMapping[errorItem.code] || errorItem.msg || "Validation error";
+          showError(errorMessage, setError);
+        });
+      } else {
+        errorMessage = data.error || "Validation error";
+        showError(errorMessage, setError);
+      }
+      break;
+    case 401:
+      errorMessage =
+        data.message === "Incorrect password"
+          ? "Incorrect password"
+          : "Unauthorized: General error";
+      showError(errorMessage, setError);
+      break;
+    case 404:
+      errorMessage = "Email not found";
+      showError(errorMessage, setError);
+      break;
+    case 500:
+      errorMessage = "Server error";
+      showError(errorMessage, setError);
+      break;
+    default:
+      errorMessage = data.error || "An error occurred";
+      showError(errorMessage, setError);
+      break;
   }
 };
