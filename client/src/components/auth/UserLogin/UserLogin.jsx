@@ -34,7 +34,11 @@ const UserLogin = () => {
         navigate("/add-task");
       }, 1500);
     } catch (error) {
-      handleError(error, setError);
+      // Ensure handleError is called only once and does not cause multiple toasts
+      if (!error.handled) {
+        error.handled = true;
+        handleError(error, setError);
+      }
     }
   };
 

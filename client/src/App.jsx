@@ -35,7 +35,22 @@ function App() {
           <Route path="/user-registeration" element={<UserRegisteration />} />
         </Routes>
         <Footer />
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            success: {
+              style: {
+                background: "#749c75",
+                color: "#fffafa",
+              },
+            },
+            error: {
+              style: {
+                background: "#dd2d4a",
+                color: "#fffafa",
+              },
+            },
+          }}
+        />
       </UserProvider>
     </div>
   );

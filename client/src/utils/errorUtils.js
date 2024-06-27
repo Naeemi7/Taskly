@@ -44,5 +44,10 @@ export const handleError = (error, setError) => {
 
   setError(errorMessage);
   logError(errorMessage, error);
-  showToast(errorMessage, "error");
+
+  // Ensure to show toast only once per error instance
+  if (!error.handled) {
+    showToast(errorMessage, "error");
+    error.handled = true;
+  }
 };

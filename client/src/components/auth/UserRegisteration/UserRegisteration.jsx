@@ -4,12 +4,16 @@ import Button from "@reusable/Button";
 import Icon from "@reusable/Icon";
 import Navigator from "@reusable/Navigator";
 import usePasswordVisibility from "@hooks/usePasswordVisibility";
+import { post } from "@api/apiService";
+import useUserContext from "@hooks/useUserContext";
+import { logBuddy, logError } from "@utils/errorUtils";
 
 const UserRegisteration = () => {
   const [confirmPassword, setConfirmPassword] = useState(false);
   const { showPassword, togglePasswordVisibility } = usePasswordVisibility();
+  const { setError } = useUserContext();
 
-  const handleFormSubmit = async (e) => {
+  const handleRegisteration = async (e) => {
     e.preventDefault();
 
     // Extract the form data
@@ -31,6 +35,11 @@ const UserRegisteration = () => {
     } else {
       setConfirmPassword(true);
     }
+
+    setError(""); // Clear previous error before registeration attampt
+    try {
+      const response = await post("/user/registeration", data, setError);
+    } catch (error) {}
   };
 
   return (
@@ -38,7 +47,7 @@ const UserRegisteration = () => {
       <div className="user-registeration-container">
         <h2>Registeration</h2>
 
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleRegisteration}>
           {/* Input for the firstname */}
           <Input
             labelName="Firstname"
