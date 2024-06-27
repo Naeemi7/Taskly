@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import useNavigation from "@hooks/useNavigation";
 import Icon from "@reusable/Icon";
 import useUserContext from "@hooks/useUserContext";
@@ -5,17 +6,21 @@ import useUserContext from "@hooks/useUserContext";
 const Footer = () => {
   const { isLoggedIn } = useUserContext();
   const { goTo } = useNavigation();
+  const location = useLocation();
 
   return (
     <div className="footer-container">
       <footer className={isLoggedIn ? "authorized" : "unauthorized"}>
+        {/* If the user is logged in and if the pathname isn't home shouldn't  render the add task icon*/}
         {isLoggedIn ? (
-          <Icon
-            library="ri"
-            name="RiAddCircleFill"
-            className="add-task-button"
-            onClick={() => goTo("/add-task")}
-          />
+          location.pathname === "/" && (
+            <Icon
+              library="ri"
+              name="RiAddCircleFill"
+              className="add-task-button"
+              onClick={() => goTo("/add-task")}
+            />
+          )
         ) : (
           <div className="unauthorized-footer">
             <a href="https://github.com/Naeemi7" target="_black">
