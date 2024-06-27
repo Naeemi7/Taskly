@@ -9,7 +9,7 @@ import Navbar from "@features/Navbar/Navbar";
 import Main from "@features/Main/Main";
 import UserLogin from "@auth/UserLogin/UserLogin";
 import UserLogout from "@auth/UserLogout/UserLogout";
-import UserRegisteration from "@auth/UserRegisteration/UserRegisteration";
+import UserRegistration from "@auth/UserRegisteration/UserRegistration";
 import AddTask from "@features/AddTask/AddTask";
 import Footer from "@features/Footer/Footer";
 
@@ -32,7 +32,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-logout" element={<UserLogout />} />
-          <Route path="/user-registeration" element={<UserRegisteration />} />
+          <Route path="/user-registration" element={<UserRegistration />} />
         </Routes>
         <Footer />
         <Toaster

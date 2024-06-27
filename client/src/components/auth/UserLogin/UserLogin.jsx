@@ -74,7 +74,7 @@ const UserLogin = () => {
           <AuthLink
             message="No account yet?"
             pathName="Register"
-            pathUrl="/user-registeration"
+            pathUrl="/user-registration"
           />
         </form>
       </div>

@@ -23,7 +23,7 @@ const Main = () => {
             <Button
               name="Register now!"
               width={250}
-              onClick={() => goTo("user-registeration")}
+              onClick={() => goTo("user-registration")}
             />
             <AuthLink
               message="Already registered? "
