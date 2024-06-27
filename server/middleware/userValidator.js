@@ -20,7 +20,7 @@ export const userValidator = (req, res, next) => {
       msg: error.msg,
       path: error.param,
       location: "body",
-      code: getCodeForError(error.param), // Example function to get code based on field
+      code: getCodeForError(error.param), // function to get code based on field
     }));
 
     return res
@@ -36,13 +36,13 @@ const getCodeForError = (field) => {
   switch (field) {
     case "firstname":
     case "lastname":
-      return "01"; // Example code for no number only string
+      return "01"; // code for no number only string
     case "username":
-      return "02"; // Example code for username specific error
+      return "02"; // code for username specific error
     case "email":
-      return "03"; // Example code for email specific error
+      return "03"; // code for email specific error
     case "password":
-      return "04"; // Example code for password specific error
+      return "04"; // code for password specific error
     default:
       return "00"; // Default code if not matched
   }
