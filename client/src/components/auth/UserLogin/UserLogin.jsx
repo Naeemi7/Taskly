@@ -31,7 +31,7 @@ const UserLogin = () => {
       showToast("Logged in successfully!", "success");
 
       setTimeout(() => {
-        navigate("/add-task");
+        navigate("/");
       }, 1500);
     } catch (error) {
       // Ensure handleError is called only once and does not cause multiple toasts
