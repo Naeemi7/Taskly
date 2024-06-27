@@ -13,41 +13,31 @@ export const logError = (message = "Error", error) => {
 };
 
 export const handleError = (error, setError) => {
+  let errorMessage = "";
+
   if (!error.response) {
-    const errorMessage = "Network Error";
-    setError(errorMessage);
-    logError(errorMessage, error);
-    ShowToast(errorMessage, "error");
-    return;
+    errorMessage = "Network Error";
+  } else {
+    const { status, data } = error.response;
+
+    switch (status) {
+      case 401:
+        errorMessage =
+          data.message === "Incorrect password"
+            ? "Incorrect password"
+            : "Unauthorized: General error";
+        break;
+      case 404:
+        errorMessage = "Email not found";
+        break;
+      case 500:
+        errorMessage = "Server error";
+        break;
+      default:
+        errorMessage = data.error || "An error occurred";
+    }
   }
 
-  const { status, data } = error.response;
-
-  let errorMessage = data.error || "An error occurred";
-
-  switch (status) {
-    case 401:
-      errorMessage =
-        data.message === "Incorrect password"
-          ? "Incorrect password"
-          : "Unauthorized: General error";
-      break;
-    case 404:
-      errorMessage = "Email not found";
-      break;
-    case 500:
-      errorMessage = "Server error";
-      break;
-    default:
-      break;
-  }
-
-  setError(errorMessage);
-  logError(errorMessage, error);
-
-  // Ensure to show toast only once per error instance
-  if (!error.handled) {
-    ShowToast(errorMessage, "error");
-    error.handled = true;
-  }
+  setError(errorMessage); // Set error message to state
+  ShowToast(errorMessage, "error"); // Show toast with the error message
 };

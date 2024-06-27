@@ -27,7 +27,7 @@ const UserLogin = () => {
 
     try {
       await loginUser(data);
-      logBuddy(data);
+      logBuddy("Logged in successfully", data);
       ShowToast("Logged in successfully!", "success");
 
       setTimeout(() => {
