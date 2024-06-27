@@ -1,17 +1,31 @@
+import { useLocation } from "react-router-dom";
+import "@styles/reusableComponents.scss";
 import Greetings from "./Greetings";
 import Profile from "./Profile";
 import Logo from "./Logo";
 import Button from "@reusable/Button";
+import Icon from "@reusable/Icon";
 import useUserContext from "@hooks/useUserContext";
 import useNavigation from "@hooks/useNavigation";
 
 const Navbar = () => {
   const { isLoggedIn } = useUserContext();
-  const { goTo } = useNavigation();
+  const { goTo, goBack } = useNavigation();
+  const location = useLocation();
 
   return (
     <div className="navbar-container">
-      <Logo />
+      {location.pathname === "/" ? (
+        <Logo />
+      ) : (
+        <Icon
+          library="md"
+          name="MdOutlineArrowBackIos"
+          size={30}
+          className="go-back"
+          onClick={() => goBack()}
+        />
+      )}
 
       {isLoggedIn ? (
         <>

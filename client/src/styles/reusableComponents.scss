@@ -78,3 +78,13 @@ form {
 .custom-toast .toast-icon {
   margin-right: 10px; // Add space between icon and text
 }
+
+// Goback ICON
+.go-back {
+  color: $primary-color;
+  cursor: pointer;
+
+  &:hover {
+    color: $hover-color;
+  }
+}
