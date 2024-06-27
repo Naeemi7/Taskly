@@ -7,7 +7,7 @@ import useNavigation from "@hooks/useNavigation";
 
 const Navbar = () => {
   const { isLoggedIn } = useUserContext();
-  const goTo = useNavigation();
+  const { goTo } = useNavigation();
 
   return (
     <div className="navbar-container">
