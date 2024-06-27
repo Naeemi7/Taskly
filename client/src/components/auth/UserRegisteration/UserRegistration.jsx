@@ -22,8 +22,8 @@ const UserRegistration = () => {
 
     const formData = new FormData(e.target);
     const data = {
-      firstName: formData.get("firstname"),
-      lastName: formData.get("lastname"),
+      firstname: formData.get("firstname"),
+      lastname: formData.get("lastname"),
       email: formData.get("email"),
       username: formData.get("username"),
       password: formData.get("password"),
