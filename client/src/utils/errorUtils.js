@@ -74,7 +74,7 @@ export const handleError = (error, setError) => {
             ShowToast(errorMessage, "error");
             shownErrors.add(errorMessage);
           } else {
-            // Clear shownErrors after 5 seconds (adjust as needed)
+            // Clear shownErrors after 5 seconds
             setTimeout(() => {
               shownErrors.delete(errorMessage);
             }, 5000);
