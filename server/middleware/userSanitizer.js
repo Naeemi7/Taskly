@@ -10,7 +10,7 @@ export const validateUserRules = [
 
   body(["firstname", "lastname"])
     .trim()
-    .isAlpha("en-GB", { ignore: "" }) // Ignores the sames
+    .isAlpha("en-GB", { ignore: " " }) // Ignores the sames
     .customSanitizer((value) => uppercaseFirstLetter(value))
     .withMessage("The first name and last name shouldn't contain numbers"),
 
