@@ -21,7 +21,7 @@ const Navigator = ({ message = "", pathName = "", pathUrl = "" }) => {
   return (
     <div className="navigator-container">
       <p>
-        {message}
+        {message}{" "}
         <Link
           to={pathUrl}
           onClick={handleClick}

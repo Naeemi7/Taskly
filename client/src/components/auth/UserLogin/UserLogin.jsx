@@ -74,7 +74,7 @@ const UserLogin = () => {
           <Navigator
             message="No account yet?"
             pathName="Register"
-            pathUrl="/user-registration"
+            pathUrl="/user-registeration"
           />
         </form>
       </div>
