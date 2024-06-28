@@ -10,12 +10,16 @@ import useNavigation from "@hooks/useNavigation";
 
 const Navbar = () => {
   const { isLoggedIn } = useUserContext();
-  const { goTo, goBack } = useNavigation();
+  const { goTo } = useNavigation();
   const location = useLocation();
 
+  const shouldShowLogo =
+    (isLoggedIn && location.pathname === "/home") ||
+    (!isLoggedIn && location.pathname === "/");
+
   return (
-    <div className="navbar-container">
-      {location.pathname === "/" ? (
+    <nav className="navbar-container">
+      {shouldShowLogo ? (
         <Logo />
       ) : (
         <Icon
@@ -23,7 +27,9 @@ const Navbar = () => {
           name="MdOutlineArrowBackIos"
           size={30}
           className="go-back"
-          onClick={() => goBack()}
+          onClick={() => {
+            isLoggedIn ? goTo("/home") : goTo("/");
+          }}
         />
       )}
 
@@ -35,7 +41,7 @@ const Navbar = () => {
       ) : (
         <Button name="Login" width={80} onClick={() => goTo("/user-login")} />
       )}
-    </div>
+    </nav>
   );
 };
 

@@ -12,7 +12,7 @@ const Footer = () => {
     <footer>
       <div className={isLoggedIn ? "authorized" : "unauthorized"}>
         {isLoggedIn ? (
-          location.pathname !== "/home" ? (
+          location.pathname === "/home" ? (
             <Icon
               library="ri"
               name="RiAddCircleFill"
