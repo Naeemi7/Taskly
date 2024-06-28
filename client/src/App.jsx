@@ -14,6 +14,7 @@ import UserLogout from "@auth/UserLogout/UserLogout";
 import UserRegistration from "@auth/UserRegisteration/UserRegistration";
 import AddTask from "@features/Tasks/AddTask/AddTask";
 import Footer from "@features/Footer/Footer";
+import Dashboard from "@features/Dashboard/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -24,19 +25,20 @@ function App() {
     <div className="app">
       <UserProvider>
         <Navbar />
+        <Dashboard />
         <Routes>
           {/* Protected Routes */}
-          <Route element={<ProtectedRoutes />}>
+          {/* <Route element={<ProtectedRoutes />}>
             <Route path="/add-task" element={<AddTask />} />
             <Route path="/home" element={<HomePage />} />
-          </Route>
+          </Route> */}
 
           {/* Unprotected Routes */}
-          <Route path="*" element={<NotFoundPage />} />
+          {/* <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-logout" element={<UserLogout />} />
-          <Route path="/user-registration" element={<UserRegistration />} />
+          <Route path="/user-registration" element={<UserRegistration />} /> */}
         </Routes>
         <Footer />
         <Toaster
