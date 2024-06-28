@@ -7,6 +7,7 @@ import UserProvider from "@provider/UserProvider";
 import ProtectedRoutes from "@auth/ProtectedRoutes/ProtectedRoutes";
 import LandingPage from "@pages/LandingPage/LandingPage";
 import HomePage from "@pages/HomePage/HomePage";
+import DashboardPage from "@pages/DashboardPage/DashboardPage";
 import NotFoundPage from "@pages/NotFoundPage/NotFoundPage";
 import Navbar from "@features/Navbar/Navbar";
 import UserLogin from "@auth/UserLogin/UserLogin";
@@ -14,7 +15,6 @@ import UserLogout from "@auth/UserLogout/UserLogout";
 import UserRegistration from "@auth/UserRegisteration/UserRegistration";
 import AddTask from "@features/Tasks/AddTask/AddTask";
 import Footer from "@features/Footer/Footer";
-import Dashboard from "@features/Dashboard/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -25,20 +25,21 @@ function App() {
     <div className="app">
       <UserProvider>
         <Navbar />
-        <Dashboard />
+
         <Routes>
           {/* Protected Routes */}
-          {/* <Route element={<ProtectedRoutes />}>
+          <Route element={<ProtectedRoutes />}>
             <Route path="/add-task" element={<AddTask />} />
             <Route path="/home" element={<HomePage />} />
-          </Route> */}
+            <Route path="/user-dashboard" element={<DashboardPage />} />
+          </Route>
 
           {/* Unprotected Routes */}
-          {/* <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-logout" element={<UserLogout />} />
-          <Route path="/user-registration" element={<UserRegistration />} /> */}
+          <Route path="/user-registration" element={<UserRegistration />} />
         </Routes>
         <Footer />
         <Toaster

@@ -1,4 +1,4 @@
-const reactIconsData = [
+const dropdownData = [
   {
     library: "fa",
     name: "FaTasks",
@@ -32,7 +32,7 @@ const reactIconsData = [
     name: "MdDashboardCustomize",
     size: 22,
     label: "Dashboard",
-    to: "/user",
+    to: "/user-dashboard",
   },
 
   {
@@ -44,4 +44,4 @@ const reactIconsData = [
   },
 ];
 
-export default reactIconsData;
+export default dropdownData;

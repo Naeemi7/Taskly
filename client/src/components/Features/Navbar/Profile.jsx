@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Icon from "@reusable/Icon";
-import reactIconsData from "@data/reactIconsData";
+import dropdownData from "@data/dropdownData";
 import DropdownItem from "./DropdownItem";
 
 const Profile = () => {
@@ -30,7 +30,7 @@ const Profile = () => {
       {showDropdown && (
         <div className="profile-dropdown">
           <ul>
-            {reactIconsData.map((item, index) => (
+            {dropdownData.map((item, index) => (
               <DropdownItem item={item} key={index} />
             ))}
           </ul>

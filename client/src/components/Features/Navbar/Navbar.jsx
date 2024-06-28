@@ -13,9 +13,26 @@ const Navbar = () => {
   const { goTo } = useNavigation();
   const location = useLocation();
 
+  const isUserDashboard = location.pathname === "/user-dashboard";
   const shouldShowLogo =
     (isLoggedIn && location.pathname === "/home") ||
     (!isLoggedIn && location.pathname === "/");
+
+  if (isUserDashboard) {
+    return (
+      <nav className="navbar-container">
+        <Icon
+          library="md"
+          name="MdOutlineArrowBackIos"
+          size={30}
+          className="go-back"
+          onClick={() => {
+            isLoggedIn ? goTo("/home") : goTo("/");
+          }}
+        />
+      </nav>
+    );
+  }
 
   return (
     <nav className="navbar-container">
