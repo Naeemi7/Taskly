@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Icon from "@reusable/Icon";
 
-const DropdownItem = ({ item }) => {
+const DropdownItems = ({ item }) => {
   return (
     <Link to={item.to} className="dropdown-link-items">
       <li>
@@ -19,8 +19,8 @@ const DropdownItem = ({ item }) => {
   );
 };
 
-DropdownItem.propTypes = {
+DropdownItems.propTypes = {
   item: PropTypes.object,
 };
 
-export default DropdownItem;
+export default DropdownItems;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Icon from "@reusable/Icon";
 import dropdownData from "@data/dropdownData";
-import DropdownItem from "./DropdownItem";
+import DropdownItems from "./DropdownItems";
 
 const Profile = () => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -31,7 +31,7 @@ const Profile = () => {
         <div className="profile-dropdown">
           <ul>
             {dropdownData.map((item, index) => (
-              <DropdownItem item={item} key={index} />
+              <DropdownItems item={item} key={index} />
             ))}
           </ul>
         </div>
