@@ -31,7 +31,7 @@ const UserLogin = () => {
       ShowToast("Logged in successfully!", "success");
 
       setTimeout(() => {
-        goTo("/");
+        goTo("/home");
       }, 1500);
     } catch (error) {
       // Ensure handleError is called only once and does not cause multiple toasts

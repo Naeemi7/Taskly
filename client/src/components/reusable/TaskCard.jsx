@@ -8,7 +8,7 @@ export default function TaskCard() {
         <p>Task descrilition</p>
         <p>Task deadlines</p>
 
-        <div className="task-category">Home</div>
+        <div className="task-category">🏠 Home</div>
       </div>
 
       <div className="right">

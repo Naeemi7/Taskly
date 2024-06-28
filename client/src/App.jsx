@@ -5,12 +5,13 @@ import "@styles/App.scss";
 import { setupInterceptors } from "@api/axiosIntercepters";
 import UserProvider from "@provider/UserProvider";
 import ProtectedRoutes from "@auth/ProtectedRoutes/ProtectedRoutes";
+import LandingPage from "@pages/LandingPage/LandingPage";
+import HomePage from "@pages/HomePage/HomePage";
 import Navbar from "@features/Navbar/Navbar";
-import Main from "@features/Main/Main";
 import UserLogin from "@auth/UserLogin/UserLogin";
 import UserLogout from "@auth/UserLogout/UserLogout";
 import UserRegistration from "@auth/UserRegisteration/UserRegistration";
-import AddTask from "@features/AddTask/AddTask";
+import AddTask from "@features/Tasks/AddTask/AddTask";
 import Footer from "@features/Footer/Footer";
 
 function App() {
@@ -26,10 +27,11 @@ function App() {
           {/* Protected Routes */}
           <Route element={<ProtectedRoutes />}>
             <Route path="/add-task" element={<AddTask />} />
+            <Route path="/home" element={<HomePage />} />
           </Route>
 
           {/* Unprotected Routes */}
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-logout" element={<UserLogout />} />
           <Route path="/user-registration" element={<UserRegistration />} />

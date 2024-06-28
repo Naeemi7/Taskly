@@ -9,21 +9,20 @@ const Footer = () => {
   const location = useLocation();
 
   return (
-    <div className="footer-container">
-      <footer className={isLoggedIn ? "authorized" : "unauthorized"}>
-        {/* If the user is logged in and if the pathname isn't home shouldn't  render the add task icon*/}
+    <footer>
+      <div className={isLoggedIn ? "authorized" : "unauthorized"}>
         {isLoggedIn ? (
-          location.pathname === "/" && (
+          location.pathname !== "/home" ? (
             <Icon
               library="ri"
               name="RiAddCircleFill"
               className="add-task-button"
               onClick={() => goTo("/add-task")}
             />
-          )
+          ) : null
         ) : (
           <div className="unauthorized-footer">
-            <a href="https://github.com/Naeemi7" target="_black">
+            <a href="https://github.com/Naeemi7" target="_blank">
               <Icon
                 library="fa"
                 name="FaGithub"
@@ -33,7 +32,7 @@ const Footer = () => {
             </a>
             <a
               href="https://www.linkedin.com/in/abdulwase-naeemi/"
-              target="_black"
+              target="_blank"
             >
               <Icon
                 library="fa"
@@ -44,8 +43,8 @@ const Footer = () => {
             </a>
           </div>
         )}
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
 

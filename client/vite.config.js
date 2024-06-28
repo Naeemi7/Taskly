@@ -26,6 +26,7 @@ export default defineConfig({
       "@features": `${currentWorkingDirectory}/src/components/features`,
       "@reusable": `${currentWorkingDirectory}/src/components/reusable`,
       "@auth": `${currentWorkingDirectory}/src/components/auth`,
+      "@pages": `${currentWorkingDirectory}/src/pages`,
     },
   },
 });
