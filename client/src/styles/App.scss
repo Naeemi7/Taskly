@@ -110,7 +110,9 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    width: 70%;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    width: 100%;
 
     // Logo Component
     .logo-container {
