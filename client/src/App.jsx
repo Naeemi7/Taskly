@@ -7,6 +7,7 @@ import UserProvider from "@provider/UserProvider";
 import ProtectedRoutes from "@auth/ProtectedRoutes/ProtectedRoutes";
 import LandingPage from "@pages/LandingPage/LandingPage";
 import HomePage from "@pages/HomePage/HomePage";
+import NotFoundPage from "@pages/NotFoundPage/NotFoundPage";
 import Navbar from "@features/Navbar/Navbar";
 import UserLogin from "@auth/UserLogin/UserLogin";
 import UserLogout from "@auth/UserLogout/UserLogout";
@@ -31,6 +32,7 @@ function App() {
           </Route>
 
           {/* Unprotected Routes */}
+          <Route path="*" element={<NotFoundPage />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/user-login" element={<UserLogin />} />
           <Route path="/user-logout" element={<UserLogout />} />
