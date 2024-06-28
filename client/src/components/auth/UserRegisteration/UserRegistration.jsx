@@ -9,7 +9,8 @@ import { post } from "@api/apiService";
 import { logBuddy, logError, handleError } from "@utils/errorUtils";
 import useUserContext from "@hooks/useUserContext";
 import AlertBox from "@reusable/AlertBox";
-import ShowToast from "@reusable/Toast"; // Assuming this is correctly implemented
+import ShowToast from "@reusable/Toast";
+import registrationFormFields from "@data/registrationFormFields";
 
 const UserRegistration = () => {
   const [passwordMatched, setPasswordMatched] = useState(true);
@@ -21,6 +22,7 @@ const UserRegistration = () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+
     const data = {
       firstname: formData.get("firstname"),
       lastname: formData.get("lastname"),
@@ -41,7 +43,7 @@ const UserRegistration = () => {
     setError(""); // Clear previous error before registration attempt
     try {
       const response = await post("/user/register", data, setError);
-      logBuddy("Registration response:", response); // Use console.log or logBuddy as needed
+      logBuddy("Registration response:", response);
 
       ShowToast("Registered successfully!", "success");
 
@@ -64,71 +66,30 @@ const UserRegistration = () => {
         <h2>Registration</h2>
 
         <form onSubmit={handleRegistration}>
-          <Input
-            labelName="Firstname"
-            type="text"
-            name="firstname"
-            placeholder="Enter your firstname"
-            required
-          />
-
-          <Input
-            labelName="Lastname"
-            type="text"
-            name="lastname"
-            placeholder="Enter your lastname"
-            required
-          />
-
-          <Input
-            labelName="Username"
-            type="text"
-            name="username"
-            placeholder="Enter your username"
-            required
-          />
-
-          <Input
-            labelName="Email"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          />
-
-          <div className="password-input">
-            <Input
-              labelName="Password *"
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="Enter your password"
-              required
-            />
-
-            <Icon
-              library="fa"
-              name={showPassword ? "FaEyeSlash" : "FaEye"}
-              className="hide-and-show-pass"
-              onClick={togglePasswordVisibility}
-            />
-          </div>
-
-          <div className="password-input">
-            <Input
-              labelName="Confirm password"
-              type={showPassword ? "text" : "password"}
-              name="confirm-password"
-              placeholder="Confirm your password"
-              required
-            />
-
-            <Icon
-              library="fa"
-              name={showPassword ? "FaEyeSlash" : "FaEye"}
-              className="hide-and-show-pass"
-              onClick={togglePasswordVisibility}
-            />
-          </div>
+          {registrationFormFields(showPassword).map((field, index) => (
+            <div
+              key={index}
+              className={
+                field.name.includes("password") ? "password-input" : ""
+              }
+            >
+              <Input
+                labelName={field.labelName}
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                required
+              />
+              {field.name.includes("password") && (
+                <Icon
+                  library="fa"
+                  name={showPassword ? "FaEyeSlash" : "FaEye"}
+                  className="hide-and-show-pass"
+                  onClick={togglePasswordVisibility}
+                />
+              )}
+            </div>
+          ))}
 
           {(!passwordMatched && (
             <AlertBox message="Passwords do not match." />
