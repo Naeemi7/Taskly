@@ -3,20 +3,26 @@ import Button from "@reusable/Button";
 import AuthLink from "@reusable/AuthLink";
 import useNavigation from "@hooks/useNavigation";
 import landingImage from "@images/main/taskly-landing.png";
+import TaskCard from "@reusable/TaskCard";
 
 const Main = () => {
   const { isLoggedIn } = useUserContext();
   const { goTo } = useNavigation();
+  const tasks = [{ name: "test" }];
 
   return (
     <div className="main-container">
       {isLoggedIn ? (
-        <div className="main-without-tasks">
-          <h4>You don&apos;t have any tasks yet</h4>
-          <p>
-            Click on the <strong>+</strong> button to add one
-          </p>
-        </div>
+        tasks.length > 0 ? (
+          <TaskCard tasks={tasks} />
+        ) : (
+          <div className="main-without-tasks">
+            <h4>You don&apos;t have any tasks yet</h4>
+            <p>
+              Click on the <strong>+</strong> button to add one
+            </p>
+          </div>
+        )
       ) : (
         <div className="unprotected-main">
           <div className="unprotected-main-content">

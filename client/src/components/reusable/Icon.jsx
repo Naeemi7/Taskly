@@ -32,9 +32,7 @@ export default function ReusableIcon({
     return null;
   }
 
-  const combinedClassName = `${className} ${
-    onClick ? "cursor-pointer" : ""
-  }`.trim();
+  const combinedClassName = `${className} cursor-pointer`.trim();
 
   return (
     <IconComponent
