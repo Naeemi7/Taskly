@@ -7,8 +7,8 @@ const dashboardData = [
     to: "/",
   },
   {
-    library: "fa",
-    name: "FaUser",
+    library: "pi",
+    name: "PiUserCircleGearFill",
     size: 22,
     label: "Edit Profile",
     to: "/",

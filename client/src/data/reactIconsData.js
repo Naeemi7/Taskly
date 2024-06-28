@@ -28,10 +28,10 @@ const reactIconsData = [
     to: "/task-categories",
   },
   {
-    library: "fa6",
-    name: "FaUserGear",
+    library: "md",
+    name: "MdDashboardCustomize",
     size: 22,
-    label: "User",
+    label: "Dashboard",
     to: "/user",
   },
 

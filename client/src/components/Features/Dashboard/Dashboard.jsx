@@ -1,22 +1,15 @@
-import profile from "@images/navbar/profile.png";
 import dashboardData from "@data/dashboardData";
-import Icon from "@reusable/Icon";
+import DashboardNavItems from "./DashboardNavItems";
+import DashboardAvatar from "./DashboardAvatar";
 
 const Dashboard = () => {
   return (
     <>
       <nav className="sidebar-container">
-        <header className="avatar">
-          <img src={profile} alt="User Avatar" />
-          <h4>Abdulwase Naeemi</h4>
-          <p>abdulwasenaeemi7@gmail.com</p>
-        </header>
+        <DashboardAvatar />
         <ul>
           {dashboardData.map((item, index) => (
-            <li key={index}>
-              <Icon library={item.library} name={item.name} />
-              <span>{item.label}</span>
-            </li>
+            <DashboardNavItems item={item} key={index} />
           ))}
         </ul>
       </nav>
