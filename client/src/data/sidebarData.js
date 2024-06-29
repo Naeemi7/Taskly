@@ -3,8 +3,8 @@ const sidebarData = [
     library: "io5",
     name: "IoCalendarNumberSharp",
     size: 22,
-    label: "My Calender",
-    to: "/",
+    label: "Calender",
+    to: "calender",
   },
   {
     library: "pi",

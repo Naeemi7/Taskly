@@ -54,49 +54,56 @@ body {
 
     ul {
       list-style: none;
-      padding: 0.8rem 0;
-      margin: 0;
+      padding: 0;
+      margin-top: 2rem;
 
-      li {
-        padding: 2rem 1rem 1rem 2rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.7rem;
-        font-weight: regular;
-        background-repeat: no-repeat;
-        background-position: left 15px center;
-        background-size: auto 20px;
-        transition: all 0.15s linear;
-        cursor: pointer;
+      .sidebar-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
 
-        &:hover {
-          background-color: $secondary-color;
+        li {
+          padding: 1rem 2rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-size: 1.7rem;
+          font-weight: regular;
+          transition: all 0.15s linear;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $secondary-color;
+            color: $primary-background-color;
+            border-top-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        &:last-child {
+          position: fixed;
+          bottom: 3rem;
+          background-color: $hover-color;
+          width: 30rem;
           color: $primary-background-color;
-          border-top-left-radius: 2rem;
-          border-bottom-right-radius: 2rem;
-        }
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
-        &:focus {
-          outline: none;
-        }
-      }
+          li {
+            display: flex;
+            justify-content: center;
+            width: 100%;
 
-      li:last-child {
-        position: fixed;
-        bottom: 3rem;
-        background-color: $hover-color;
-        width: 30rem;
-        color: $primary-background-color;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-
-        &:hover {
-          background-color: $primary-color;
-          border-top-left-radius: 0rem;
-          border-bottom-right-radius: 0rem;
+            &:hover {
+              background-color: $primary-color;
+              border-radius: 0;
+            }
+          }
         }
       }
     }

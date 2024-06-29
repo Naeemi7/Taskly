@@ -31,7 +31,7 @@ function App() {
           <Route element={<ProtectedRoutes />}>
             <Route path="/add-task" element={<AddTask />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/user-dashboard" element={<DashboardPage />} />
+            <Route path="/user-dashboard/*" element={<DashboardPage />} />
           </Route>
 
           {/* Unprotected Routes */}
