@@ -3,6 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+body {
+  margin-top: -2rem;
+}
 
 html {
   font-size: 62.5%;
