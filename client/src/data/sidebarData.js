@@ -1,4 +1,4 @@
-const dashboardData = [
+const sidebarData = [
   {
     library: "io5",
     name: "IoCalendarNumberSharp",
@@ -43,4 +43,4 @@ const dashboardData = [
   },
 ];
 
-export default dashboardData;
+export default sidebarData;

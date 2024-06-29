@@ -26,7 +26,6 @@ const Profile = () => {
         size={24}
         className="profile-icon"
       />
-
       {showDropdown && (
         <div className="profile-dropdown">
           <ul>

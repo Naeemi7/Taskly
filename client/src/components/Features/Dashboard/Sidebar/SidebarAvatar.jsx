@@ -1,6 +1,6 @@
 import profile from "@images/navbar/profile.png";
 
-const DashboardAvatar = () => {
+const SidebarAvatar = () => {
   return (
     <header className="avatar">
       <img src={profile} alt="User Avatar" />
@@ -10,4 +10,4 @@ const DashboardAvatar = () => {
   );
 };
 
-export default DashboardAvatar;
+export default SidebarAvatar;

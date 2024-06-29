@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Icon from "@reusable/Icon";
 
-const DashboardNavItems = ({ item }) => {
+const SidebarNavItems = ({ item }) => {
   return (
     <li>
       <Icon library={item.library} name={item.name} />
@@ -10,8 +10,8 @@ const DashboardNavItems = ({ item }) => {
   );
 };
 
-export default DashboardNavItems;
+export default SidebarNavItems;
 
-DashboardNavItems.propTypes = {
+SidebarNavItems.propTypes = {
   item: PropTypes.object,
 };

@@ -1,11 +1,11 @@
-import Dashboard from "@features/Dashboard/Dashboard";
+import Sidebar from "@features/Dashboard/Sidebar/Sidebar";
 import Navbar from "@features/Navbar/Navbar";
 
 const DashboardPage = () => {
   return (
     <>
       <Navbar />
-      <Dashboard />
+      <Sidebar />
     </>
   );
 };
