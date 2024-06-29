@@ -378,15 +378,18 @@ body {
 
   // Footer Component
   footer {
-    width: 100vw;
+    width: 100%;
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
     grid-area: footer;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    padding-right: 4rem;
 
     // authorized layout for footer
     .authorized {
-      width: 70%;
       display: flex;
       align-items: center;
       justify-content: flex-end;
